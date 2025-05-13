@@ -52,18 +52,24 @@ Tukee automaattista navigaatiota esim. awesome-pages-plugin- tai custom-skriptin
 
 Tukee Mermaid-kaavioiden renderöintiä
 
-2. 🔁 CI-pipeline jokaisessa projektissa
+2. 🔁 CI/CD-pipeline starter-templatessa
+Jokainen uusi projekti luodaan yhteisestä starter-templatesta, jossa on valmiiksi määritelty CI/CD-putki dokumentaation siirtoon keskitettyyn dokumentaatiorepoon.
+
 Workflow:
+- Kun projektiin tehdään muutos (push/merge), pipeline käynnistyy automaattisesti.
+- Dokumentaatio buildataan (esim. `mkdocs build`).
+- Pipeline kloonaa keskitetyn dokumentaatiorepon (esim. panualaluusua/docs).
+- Projektin dokumentaatio kopioidaan oikeaan kansioon (docs/projekti-nimi/).
+- Muutokset commitataan ja pusketaan keskitettyyn dokumentaatiorepoon.
+- Käytetään Personal Access Tokenia, joka on valmiiksi määritelty starter-templateen ja tallennettu GitHubin secrets-muuttujaksi turvallisesti.
+- Keskitetty dokumentaatiorepo buildaa ja deployaa kaiken GitHub Pagesiin.
 
-Buildaa dokumentaation (jos esim. Docusaurus tai custom-muoto)
-
-Clonaa panualaluusua/docs
-
-Kopioi docs/ → docs/projekti-nimi/
-
-Commit + Push
-
-Pipeline vaatii Personal Access Tokenin tai Deploy Keyn kirjoitusoikeudella
+Turvallisuus ja käytännöt:
+- Personal Access Tokenin oikeudet on rajattu vain tarvittaviin repo-oikeuksiin.
+- Tokenia ei tallenneta suoraan workflow-tiedostoon, vaan käytetään GitHubin secrets-ominaisuutta.
+- Pipeline on dokumentoitu starter-templatessa README-tiedostoon, jotta uuden projektin kehittäjät osaavat ottaa sen käyttöön.
+- Pipelinessa voidaan käyttää bot-käyttäjää tai squash-mergeä, jotta commit-historia pysyy siistinä.
+- Pipeline testataan aina uudessa projektissa ennen tuotantokäyttöä.
 
 3. 🧭 Navigaation päivitys
 Käytetään automaattisesti generoituvaa navigaatiota:

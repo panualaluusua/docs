@@ -1,0 +1,12 @@
+site_name: Keskitetty dokumentaatio
+site_url: https://panualaluusua.github.io/docs/
+theme:
+  name: material
+# nav-osio poistettu, koska awesome-pages-plugin rakentaa navigaation automaattisesti kansiorakenteen perusteella
+plugins:
+  - search
+  - awesome-pages
+  - mermaid2
+markdown_extensions:
+  - pymdownx.superfences
+  - attr_list
