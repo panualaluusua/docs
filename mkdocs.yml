@@ -1,5 +1,8 @@
 site_name: Keskitetty dokumentaatio
 site_url: https://panualaluusua.github.io/docs/
+# Tämä on tärkein asetus, jotta kaikki polut ja linkit toimivat oikein aliurlissa
+extra:
+  base_url: /docs
 theme:
   name: material
 # nav-osio poistettu, koska awesome-pages-plugin rakentaa navigaation automaattisesti kansiorakenteen perusteella
