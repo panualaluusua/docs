@@ -16,7 +16,7 @@ Tämä dokumentti kuvaa projektin etenemistä Mermaid-syntaksilla. Kehityksen ti
 2. **Määrittele aikataulu ja vaiheet:** Kuvaa, miten eri kehitysvaiheet etenevät ja kuinka kauan ne kestävät. Suositeltavaa on käyttää Gantt-kaaviota.
 3. **Kirjoita Mermaid-koodia:** Upota kaavio suoraan tähän tiedostoon. Alla on esimerkki Gantt-kaaviosta:
 
-```mermaid
+```text
 gantt
 dateFormat  YYYY-MM-DD
 title       Projektin Kehityksen tiekartta
