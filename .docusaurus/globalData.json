@@ -8,36 +8,11 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs/docs",
-          "mainDocId": "projekti1/docs/index",
+          "mainDocId": "projekti1/docs/dokumentti",
           "docs": [
             {
-              "id": "projekti1/docs/architecture",
-              "path": "/docs/docs/projekti1/docs/architecture",
-              "sidebar": "defaultSidebar"
-            },
-            {
-              "id": "projekti1/docs/changelog",
-              "path": "/docs/docs/projekti1/docs/changelog",
-              "sidebar": "defaultSidebar"
-            },
-            {
-              "id": "projekti1/docs/index",
-              "path": "/docs/docs/projekti1/docs/",
-              "sidebar": "defaultSidebar"
-            },
-            {
-              "id": "projekti1/docs/projektinblueprint",
-              "path": "/docs/docs/projekti1/docs/projektinblueprint",
-              "sidebar": "defaultSidebar"
-            },
-            {
-              "id": "projekti1/docs/video_demo_material",
-              "path": "/docs/docs/projekti1/docs/video_demo_material",
-              "sidebar": "defaultSidebar"
-            },
-            {
-              "id": "projekti1/docs/vision",
-              "path": "/docs/docs/projekti1/docs/vision",
+              "id": "projekti1/docs/dokumentti",
+              "path": "/docs/docs/projekti1/docs/dokumentti",
               "sidebar": "defaultSidebar"
             }
           ],
@@ -45,8 +20,8 @@
           "sidebars": {
             "defaultSidebar": {
               "link": {
-                "path": "/docs/docs/projekti1/docs/",
-                "label": "Dokumentaation etusivu"
+                "path": "/docs/docs/projekti1/docs/dokumentti",
+                "label": "projekti1/docs/dokumentti"
               }
             }
           }
@@ -62,36 +37,11 @@
           "label": "Next",
           "isLast": true,
           "path": "/docs/projekti1",
-          "mainDocId": "docs/index",
+          "mainDocId": "docs/dokumentti",
           "docs": [
             {
-              "id": "docs/architecture",
-              "path": "/docs/projekti1/docs/architecture",
-              "sidebar": "sidebar"
-            },
-            {
-              "id": "docs/changelog",
-              "path": "/docs/projekti1/docs/changelog",
-              "sidebar": "sidebar"
-            },
-            {
-              "id": "docs/index",
-              "path": "/docs/projekti1/docs/",
-              "sidebar": "sidebar"
-            },
-            {
-              "id": "docs/projektinblueprint",
-              "path": "/docs/projekti1/docs/projektinblueprint",
-              "sidebar": "sidebar"
-            },
-            {
-              "id": "docs/video_demo_material",
-              "path": "/docs/projekti1/docs/video_demo_material",
-              "sidebar": "sidebar"
-            },
-            {
-              "id": "docs/vision",
-              "path": "/docs/projekti1/docs/vision",
+              "id": "docs/dokumentti",
+              "path": "/docs/projekti1/docs/dokumentti",
               "sidebar": "sidebar"
             }
           ],
@@ -99,8 +49,8 @@
           "sidebars": {
             "sidebar": {
               "link": {
-                "path": "/docs/projekti1/docs/",
-                "label": "Dokumentaation etusivu"
+                "path": "/docs/projekti1/docs/dokumentti",
+                "label": "docs/dokumentti"
               }
             }
           }

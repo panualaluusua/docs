@@ -2,11 +2,6 @@
 module.exports = {
   someSidebar: {
     Dokumentaatio: [
-      'index',
-      'vision',
-      'projektinblueprint',
-      'changelog',
-      'architecture',
     ],
   },
 };

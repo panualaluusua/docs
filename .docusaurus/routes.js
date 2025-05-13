@@ -4,49 +4,19 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/docs/docs',
-    component: ComponentCreator('/docs/docs', '0a0'),
+    component: ComponentCreator('/docs/docs', 'ffe'),
     routes: [
       {
         path: '/docs/docs',
-        component: ComponentCreator('/docs/docs', '5b8'),
+        component: ComponentCreator('/docs/docs', 'fc8'),
         routes: [
           {
             path: '/docs/docs',
-            component: ComponentCreator('/docs/docs', '960'),
+            component: ComponentCreator('/docs/docs', '397'),
             routes: [
               {
-                path: '/docs/docs/projekti1/docs/',
-                component: ComponentCreator('/docs/docs/projekti1/docs/', '501'),
-                exact: true,
-                sidebar: "defaultSidebar"
-              },
-              {
-                path: '/docs/docs/projekti1/docs/architecture',
-                component: ComponentCreator('/docs/docs/projekti1/docs/architecture', 'a84'),
-                exact: true,
-                sidebar: "defaultSidebar"
-              },
-              {
-                path: '/docs/docs/projekti1/docs/changelog',
-                component: ComponentCreator('/docs/docs/projekti1/docs/changelog', 'cb7'),
-                exact: true,
-                sidebar: "defaultSidebar"
-              },
-              {
-                path: '/docs/docs/projekti1/docs/projektinblueprint',
-                component: ComponentCreator('/docs/docs/projekti1/docs/projektinblueprint', 'b5b'),
-                exact: true,
-                sidebar: "defaultSidebar"
-              },
-              {
-                path: '/docs/docs/projekti1/docs/video_demo_material',
-                component: ComponentCreator('/docs/docs/projekti1/docs/video_demo_material', '418'),
-                exact: true,
-                sidebar: "defaultSidebar"
-              },
-              {
-                path: '/docs/docs/projekti1/docs/vision',
-                component: ComponentCreator('/docs/docs/projekti1/docs/vision', '11c'),
+                path: '/docs/docs/projekti1/docs/dokumentti',
+                component: ComponentCreator('/docs/docs/projekti1/docs/dokumentti', 'e66'),
                 exact: true,
                 sidebar: "defaultSidebar"
               }
@@ -58,49 +28,19 @@ export default [
   },
   {
     path: '/docs/projekti1',
-    component: ComponentCreator('/docs/projekti1', '4e3'),
+    component: ComponentCreator('/docs/projekti1', '407'),
     routes: [
       {
         path: '/docs/projekti1',
-        component: ComponentCreator('/docs/projekti1', '821'),
+        component: ComponentCreator('/docs/projekti1', 'a04'),
         routes: [
           {
             path: '/docs/projekti1',
-            component: ComponentCreator('/docs/projekti1', '971'),
+            component: ComponentCreator('/docs/projekti1', '415'),
             routes: [
               {
-                path: '/docs/projekti1/docs/',
-                component: ComponentCreator('/docs/projekti1/docs/', '525'),
-                exact: true,
-                sidebar: "sidebar"
-              },
-              {
-                path: '/docs/projekti1/docs/architecture',
-                component: ComponentCreator('/docs/projekti1/docs/architecture', 'f2d'),
-                exact: true,
-                sidebar: "sidebar"
-              },
-              {
-                path: '/docs/projekti1/docs/changelog',
-                component: ComponentCreator('/docs/projekti1/docs/changelog', 'da1'),
-                exact: true,
-                sidebar: "sidebar"
-              },
-              {
-                path: '/docs/projekti1/docs/projektinblueprint',
-                component: ComponentCreator('/docs/projekti1/docs/projektinblueprint', 'c7a'),
-                exact: true,
-                sidebar: "sidebar"
-              },
-              {
-                path: '/docs/projekti1/docs/video_demo_material',
-                component: ComponentCreator('/docs/projekti1/docs/video_demo_material', '974'),
-                exact: true,
-                sidebar: "sidebar"
-              },
-              {
-                path: '/docs/projekti1/docs/vision',
-                component: ComponentCreator('/docs/projekti1/docs/vision', '726'),
+                path: '/docs/projekti1/docs/dokumentti',
+                component: ComponentCreator('/docs/projekti1/docs/dokumentti', '4db'),
                 exact: true,
                 sidebar: "sidebar"
               }
