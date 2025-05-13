@@ -9,7 +9,9 @@ theme:
 plugins:
   - search
   - awesome-pages
-  - mermaid2
+  - mermaid2:
+      arguments:
+        theme: default
 markdown_extensions:
   - pymdownx.superfences
   - attr_list
