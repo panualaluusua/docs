@@ -1,36 +1,19 @@
 {
-  "/docs/docs-ffe": {
+  "/minidocs-62e": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/docs/docs-fc8": {
+  "/minidocs-44f": {
     "__comp": "a7bd4aaa",
-    "__props": "a2065270"
+    "__props": "18115f31"
   },
-  "/docs/docs-397": {
+  "/minidocs-26e": {
     "__comp": "a94703ab"
   },
-  "/docs/docs/projekti1/docs/dokumentti-e66": {
+  "/minidocs/aloitus-604": {
     "__comp": "17896441",
-    "content": "b0d6b393"
-  },
-  "/docs/projekti1-407": {
-    "__comp": "5e95c892",
-    "__context": {
-      "plugin": "4c1c400b"
-    }
-  },
-  "/docs/projekti1-a04": {
-    "__comp": "a7bd4aaa",
-    "__props": "2e7fb06b"
-  },
-  "/docs/projekti1-415": {
-    "__comp": "a94703ab"
-  },
-  "/docs/projekti1/docs/dokumentti-4db": {
-    "__comp": "17896441",
-    "content": "b0d6b393"
+    "content": "a3591356"
   }
 }

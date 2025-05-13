@@ -1,56 +1,27 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs/docs",
+      "path": "/minidocs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/docs/docs",
-          "mainDocId": "projekti1/docs/dokumentti",
+          "path": "/minidocs",
+          "mainDocId": "aloitus",
           "docs": [
             {
-              "id": "projekti1/docs/dokumentti",
-              "path": "/docs/docs/projekti1/docs/dokumentti",
-              "sidebar": "defaultSidebar"
+              "id": "aloitus",
+              "path": "/minidocs/aloitus",
+              "sidebar": "tutorialSidebar"
             }
           ],
           "draftIds": [],
           "sidebars": {
-            "defaultSidebar": {
+            "tutorialSidebar": {
               "link": {
-                "path": "/docs/docs/projekti1/docs/dokumentti",
-                "label": "projekti1/docs/dokumentti"
-              }
-            }
-          }
-        }
-      ],
-      "breadcrumbs": true
-    },
-    "projekti1": {
-      "path": "/docs/projekti1",
-      "versions": [
-        {
-          "name": "current",
-          "label": "Next",
-          "isLast": true,
-          "path": "/docs/projekti1",
-          "mainDocId": "docs/dokumentti",
-          "docs": [
-            {
-              "id": "docs/dokumentti",
-              "path": "/docs/projekti1/docs/dokumentti",
-              "sidebar": "sidebar"
-            }
-          ],
-          "draftIds": [],
-          "sidebars": {
-            "sidebar": {
-              "link": {
-                "path": "/docs/projekti1/docs/dokumentti",
-                "label": "docs/dokumentti"
+                "path": "/minidocs/aloitus",
+                "label": "aloitus"
               }
             }
           }

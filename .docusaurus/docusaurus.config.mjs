@@ -4,33 +4,53 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "Panun Dokumentaatio",
-  "url": "https://panualaluusua.fi",
-  "baseUrl": "/docs/",
+  "title": "Minun Yksinkertainen Sivusto",
+  "tagline": "Helppo tapa testata Docusaurusta",
+  "url": "https://example.com",
+  "baseUrl": "/",
+  "onBrokenLinks": "warn",
+  "onBrokenMarkdownLinks": "warn",
   "favicon": "img/favicon.ico",
-  "organizationName": "panualaluusua",
-  "projectName": "docs",
+  "organizationName": "testuser",
+  "projectName": "testproject",
+  "presets": [
+    [
+      "@docusaurus/preset-classic",
+      {
+        "docs": {
+          "path": "minidocs",
+          "routeBasePath": "minidocs",
+          "sidebarPath": "C:\\Users\\panua\\projektit\\docs\\sidebars-minidocs.js"
+        },
+        "blog": false,
+        "theme": {
+          "customCss": "C:\\Users\\panua\\projektit\\docs\\src\\css\\custom.css"
+        }
+      }
+    ]
+  ],
   "themeConfig": {
     "navbar": {
-      "title": "Panun Dokumentaatio",
+      "title": "Yksinkertainen Sivusto",
       "logo": {
-        "alt": "Panun Dokumentaatio logo",
+        "alt": "Sivuston Logo",
         "src": "img/logo.svg",
-        "href": "docs/"
+        "href": "/minidocs/aloitus"
       },
       "items": [
         {
-          "to": "/projekti1/",
-          "label": "projekti1",
-          "position": "left"
+          "type": "docSidebar",
+          "sidebarId": "tutorialSidebar",
+          "position": "left",
+          "label": "MiniDokumentaatio"
         }
       ],
       "hideOnScroll": false
     },
     "footer": {
       "style": "dark",
-      "copyright": "Copyright © 2025 Panu Alaluusua",
-      "links": []
+      "links": [],
+      "copyright": "Copyright 2025 Minun Yksinkertainen Sivusto. Built with Docusaurus."
     },
     "colorMode": {
       "defaultMode": "light",
@@ -197,27 +217,6 @@ export default {
       "maxHeadingLevel": 3
     }
   },
-  "plugins": [
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "projekti1",
-        "path": "docs/projekti1",
-        "routeBasePath": "projekti1",
-        "sidebarPath": "C:\\Users\\panua\\projektit\\docs\\docs\\projekti1\\sidebars.js"
-      }
-    ]
-  ],
-  "presets": [
-    [
-      "@docusaurus/preset-classic",
-      {
-        "theme": {
-          "customCss": "C:\\Users\\panua\\projektit\\docs\\src\\css\\custom.css"
-        }
-      }
-    ]
-  ],
   "baseUrlIssueBanner": true,
   "i18n": {
     "defaultLocale": "en",
@@ -242,20 +241,18 @@ export default {
     },
     "experimental_router": "browser"
   },
-  "onBrokenLinks": "throw",
   "onBrokenAnchors": "warn",
-  "onBrokenMarkdownLinks": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
     "static"
   ],
   "customFields": {},
+  "plugins": [],
   "themes": [],
   "scripts": [],
   "headTags": [],
   "stylesheets": [],
   "clientModules": [],
-  "tagline": "",
   "titleDelimiter": "|",
   "noIndex": false,
   "markdown": {

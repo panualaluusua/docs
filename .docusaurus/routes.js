@@ -3,46 +3,22 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/docs/docs',
-    component: ComponentCreator('/docs/docs', 'ffe'),
+    path: '/minidocs',
+    component: ComponentCreator('/minidocs', '62e'),
     routes: [
       {
-        path: '/docs/docs',
-        component: ComponentCreator('/docs/docs', 'fc8'),
+        path: '/minidocs',
+        component: ComponentCreator('/minidocs', '44f'),
         routes: [
           {
-            path: '/docs/docs',
-            component: ComponentCreator('/docs/docs', '397'),
+            path: '/minidocs',
+            component: ComponentCreator('/minidocs', '26e'),
             routes: [
               {
-                path: '/docs/docs/projekti1/docs/dokumentti',
-                component: ComponentCreator('/docs/docs/projekti1/docs/dokumentti', 'e66'),
+                path: '/minidocs/aloitus',
+                component: ComponentCreator('/minidocs/aloitus', '604'),
                 exact: true,
-                sidebar: "defaultSidebar"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    path: '/docs/projekti1',
-    component: ComponentCreator('/docs/projekti1', '407'),
-    routes: [
-      {
-        path: '/docs/projekti1',
-        component: ComponentCreator('/docs/projekti1', 'a04'),
-        routes: [
-          {
-            path: '/docs/projekti1',
-            component: ComponentCreator('/docs/projekti1', '415'),
-            routes: [
-              {
-                path: '/docs/projekti1/docs/dokumentti',
-                component: ComponentCreator('/docs/projekti1/docs/dokumentti', '4db'),
-                exact: true,
-                sidebar: "sidebar"
+                sidebar: "tutorialSidebar"
               }
             ]
           }

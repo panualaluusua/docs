@@ -6,8 +6,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "prebuild": "node generate-docusaurus-config.js",
     "build": "docusaurus build",
+    "serve": "docusaurus serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "description": "",
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0"
+    "@docusaurus/preset-classic": "^3.7.0",
+    "prism-react-renderer": "^2.4.1"
   }
 }
