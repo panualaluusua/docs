@@ -1,0 +1,29 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "prebuild": "node generate-docusaurus-config.js",
+    "build": "docusaurus build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panualaluusua/docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panualaluusua/docs/issues"
+  },
+  "homepage": "https://github.com/panualaluusua/docs#readme",
+  "description": "",
+  "dependencies": {
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs/docs",
+          "mainDocId": "projekti1/docs/index",
+          "docs": [
+            {
+              "id": "projekti1/docs/architecture",
+              "path": "/docs/docs/projekti1/docs/architecture",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "projekti1/docs/changelog",
+              "path": "/docs/docs/projekti1/docs/changelog",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "projekti1/docs/index",
+              "path": "/docs/docs/projekti1/docs/",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "projekti1/docs/projektinblueprint",
+              "path": "/docs/docs/projekti1/docs/projektinblueprint",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "projekti1/docs/video_demo_material",
+              "path": "/docs/docs/projekti1/docs/video_demo_material",
+              "sidebar": "defaultSidebar"
+            },
+            {
+              "id": "projekti1/docs/vision",
+              "path": "/docs/docs/projekti1/docs/vision",
+              "sidebar": "defaultSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "defaultSidebar": {
+              "link": {
+                "path": "/docs/docs/projekti1/docs/",
+                "label": "Dokumentaation etusivu"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    },
+    "projekti1": {
+      "path": "/docs/projekti1",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs/projekti1",
+          "mainDocId": "docs/index",
+          "docs": [
+            {
+              "id": "docs/architecture",
+              "path": "/docs/projekti1/docs/architecture",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "docs/changelog",
+              "path": "/docs/projekti1/docs/changelog",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "docs/index",
+              "path": "/docs/projekti1/docs/",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "docs/projektinblueprint",
+              "path": "/docs/projekti1/docs/projektinblueprint",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "docs/video_demo_material",
+              "path": "/docs/projekti1/docs/video_demo_material",
+              "sidebar": "sidebar"
+            },
+            {
+              "id": "docs/vision",
+              "path": "/docs/projekti1/docs/vision",
+              "sidebar": "sidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "sidebar": {
+              "link": {
+                "path": "/docs/projekti1/docs/",
+                "label": "Dokumentaation etusivu"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "projekti1/docs/vision",
+  "title": "Projektin visio",
+  "description": "Tämä dokumentti toimii kevyenä PRD",
+  "source": "@site/docs/projekti1/docs/vision.md",
+  "sourceDirName": "projekti1/docs",
+  "slug": "/projekti1/docs/vision",
+  "permalink": "/docs/docs/projekti1/docs/vision",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "defaultSidebar",
+  "previous": {
+    "title": "Projektin Video Demo Materiaali",
+    "permalink": "/docs/docs/projekti1/docs/video_demo_material"
+  }
+}

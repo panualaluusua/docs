@@ -1,0 +1,19 @@
+{
+  "id": "docs/index",
+  "title": "Dokumentaation etusivu",
+  "description": "",
+  "source": "@site/docs/projekti1/docs/index.md",
+  "sourceDirName": "docs",
+  "slug": "/docs/",
+  "permalink": "/docs/projekti1/docs/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "sidebar",
+  "next": {
+    "title": "Arkkitehtuurikuvaus",
+    "permalink": "/docs/projekti1/docs/architecture"
+  }
+}
