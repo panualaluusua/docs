@@ -11,7 +11,7 @@ Mermaid-kaavion avulla visualisoidaan projektin pääkomponentit, niiden välise
 3.  **Valitse sopiva kaaviotyyppi**: Mermaid tarjoaa useita kaaviotyyppejä (esim. `graph TD` ylhäältä alas -kaavio, `flowchart` vuokaavio, `sequenceDiagram` sekvenssikaavio). Valitse parhaiten arkkitehtuuriasi kuvaava tyyppi.
 4.  **Kirjoita Mermaid-koodi**: Käytä Mermaid-syntaksia kaavion luomiseen. Voit upottaa koodin suoraan tähän Markdown-tiedostoon seuraavasti:
 
-    ```mermaid
+    ```text
     graph TD
         A[Käyttöliittymä] --> B(Taustapalvelu API)
         B --> C{Tietokanta}
@@ -24,7 +24,7 @@ Mermaid-kaavion avulla visualisoidaan projektin pääkomponentit, niiden välise
 
 (Tähän osioon voit lisätä esimerkin yksinkertaisesta Mermaid-kaaviosta, joka toimii pohjana uusille projekteille)
 
-```mermaid
+```text
 graph TD
     UserInterface["Käyttöliittymä (React/Vue/Angular)"] --> BackendAPI["Taustapalvelu (Node.js/Python/Java)"]
     BackendAPI --> Database[(Tietokanta (PostgreSQL/MongoDB))]
