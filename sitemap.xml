@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/architecture/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/changelog/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/integrations/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/projektinblueprint/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/video_demo_material/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/esimerkkiprojekti/vision/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
          <loc>https://panualaluusua.github.io/docs/insighthub/MINDMAP_IDEAS/</loc>
          <lastmod>2025-05-31</lastmod>
     </url>
@@ -42,18 +14,6 @@
     </url>
     <url>
          <loc>https://panualaluusua.github.io/docs/insighthub/VISION/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/projekti1/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/projekti1/muut/</loc>
-         <lastmod>2025-05-31</lastmod>
-    </url>
-    <url>
-         <loc>https://panualaluusua.github.io/docs/projekti2/</loc>
          <lastmod>2025-05-31</lastmod>
     </url>
 </urlset>
