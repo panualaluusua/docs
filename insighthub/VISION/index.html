@@ -14,7 +14,7 @@
         <link rel="prev" href="../VIDEO_STORY_OUTLINE/">
       
       
-        <link rel="next" href="../../keskitetty_dokumentaatio/KUVAUS/">
+        <link rel="next" href="../todo/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -282,6 +282,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document (PRD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../PROJECT_DESCRIPTION_LONGFORM/" class="md-nav__link">
         
   
@@ -378,6 +401,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tulevaisuuden-visio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tulevaisuuden visio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#current-state" class="md-nav__link">
     <span class="md-ellipsis">
       Current State
@@ -415,24 +447,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-advanced-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 3: Advanced Features
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phase-4-ai-enhancement" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 4: AI Enhancement
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#technical-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Technical Requirements
@@ -455,19 +469,33 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#future-vision" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Vision
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TODO: Automatisoitu työjono uusien sisältöjen hakemiseen, arviointiin ja esittämiseen
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -917,6 +945,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tulevaisuuden-visio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tulevaisuuden visio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#current-state" class="md-nav__link">
     <span class="md-ellipsis">
       Current State
@@ -954,24 +991,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-3-advanced-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 3: Advanced Features
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phase-4-ai-enhancement" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phase 4: AI Enhancement
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#technical-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Technical Requirements
@@ -994,15 +1013,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#future-vision" class="md-nav__link">
-    <span class="md-ellipsis">
-      Future Vision
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1020,14 +1030,42 @@
 
 
 <h1 id="vision">VISION</h1>
+<h2 id="tulevaisuuden-visio">Tulevaisuuden visio</h2>
+<p>Visiona on, että voimme hakea useista eri tietolähteistä meille relevantit uutiset ja sisällöt. Tämän jälkeen AI-agentti kuratoi ja pisteyttää lähteet sen perusteella, kuinka relevantteja ne ovat käyttäjän taustaan, projekteihin, työhön ja kiinnostuksen kohteisiin nähden. Lopuksi esittelemme sisällöt helposti omaksuttavassa muodossa – esimerkiksi Redditin tai Jodelin kaltaisena virtana.</p>
 <h2 id="current-state">Current State</h2>
+<p>InsightHubin nykyiset toiminnot:</p>
 <ul>
-<li><strong>Reddit URL Fetcher</strong>: The software currently fetches URLs from Reddit, likely based on specific criteria such as subreddit, post type, or keywords. This functionality is useful for aggregating content from Reddit for analysis, monitoring, or content curation.</li>
+<li>
+<p><strong>Reddit-integraatio:</strong></p>
+<ul>
+<li>Käyttäjä voi valita subreddit-kategorian ja aikavälin (viikko/kuukausi).</li>
+<li>Sovellus hakee valitun määrän suosituimpia postauksia useista alikategorioista Redditin public API:n kautta.</li>
+<li>Tulokset näytetään listana (otsikko, linkki, score).</li>
+<li>Postaukset voidaan kopioida yhdellä napilla (URL-listana).</li>
+</ul>
+</li>
+<li>
+<p><strong>YouTube-integraatio:</strong></p>
+<ul>
+<li>Käyttäjä voi syöttää kanavien nimet ja halutun videomäärän.</li>
+<li>Sovellus hakee uusimmat videot jokaiselta kanavalta (otsikko, linkki, kanavan nimi).</li>
+<li>Videot näytetään listana ja niiden URL:t voi kopioida yhdellä napilla.</li>
+</ul>
+</li>
+<li>
+<p><strong>UI ja käyttökokemus:</strong></p>
+<ul>
+<li>Streamlit-pohjainen käyttöliittymä, jossa on selkeät syötekentät ja valinnat.</li>
+<li>Käyttäjä voi helposti selata, valita ja kopioida Reddit- ja YouTube-linkkejä jatkokäyttöä varten.</li>
+<li>Oletus-podcast-promptien valinta ja esikatselu.</li>
+<li>Virheiden ja puuttuvien API-avainten käsittely sekä käyttäjäystävälliset varoitukset.</li>
+</ul>
+</li>
 </ul>
 <h2 id="implementation-plan">Implementation Plan</h2>
 <h3 id="phase-1-core-reddit-integration">Phase 1: Core Reddit Integration</h3>
 <ol>
-<li><strong>Basic Streamlit Frontend</strong> ✅</li>
+<li><strong>Basic Streamlit Frontend</strong> </li>
 <li>Setup Streamlit app structure</li>
 <li>Basic subreddit input and fetch functionality</li>
 <li>
@@ -1101,61 +1139,6 @@
 </ul>
 </li>
 </ol>
-<h3 id="phase-3-advanced-features">Phase 3: Advanced Features</h3>
-<ol>
-<li><strong>Content Organization</strong></li>
-<li>Tagging system (Supports <strong>Chunking/Structuring</strong>)</li>
-<li>Custom categories (Supports <strong>Chunking/Structuring</strong>)</li>
-<li>Smart collections</li>
-<li>
-<p>Search history (Supports <strong>Spaced Repetition/Retrieval</strong>)</p>
-</li>
-<li>
-<p><strong>Analytics Dashboard</strong></p>
-</li>
-<li>Content source statistics</li>
-<li>User interaction metrics</li>
-<li>Trend visualization</li>
-<li>
-<p>Impact scoring</p>
-</li>
-<li>
-<p><strong>Export and Integration</strong></p>
-</li>
-<li>Multiple export formats</li>
-<li>NotebookLM integration</li>
-<li><strong>Prompt Creator for NotebookLM/Summarization</strong>: Develop a tool to generate customized prompts for LLMs based on selected subcategory sources. These prompts will define the structure (e.g., podcast script, bullet points), tone, and focus of the desired summary output from the selected content. (Supports <strong>Active Processing</strong>)</li>
-<li><strong>NotebookLM Podcast Prompt Generator</strong>: Build a Streamlit-based tool that enables users to generate concise, category/topic-specific AI prompts for NotebookLM Audio Overview. The user can select topic, tone, target audience, structure, and length preferences. The tool ensures the prompt stays within the 500 character limit and helps guide the AI podcast generation process based on selected Reddit/YouTube URLs. Enables highly personalized, high-quality AI podcasts directly from the aggregated content.</li>
-<li>API endpoint for external tools</li>
-<li>Backup/restore functionality</li>
-</ol>
-<h3 id="phase-4-ai-enhancement">Phase 4: AI Enhancement</h3>
-<ol>
-<li><strong>Content Processing</strong></li>
-<li><strong>Content Extraction</strong>: Implement logic to fetch core content from selected URLs (articles, potentially video transcripts).</li>
-<li>LLM-based content summarization (using the Prompt Creator from Phase 3). (Supports <strong>Active Processing</strong>)</li>
-<li>Automatic categorization (Supports <strong>Chunking/Structuring</strong>)</li>
-<li>Relevance scoring (Supports <strong>Selective Exposure</strong>)</li>
-<li>
-<p>Topic extraction</p>
-</li>
-<li>
-<p><strong>Smart Features</strong></p>
-</li>
-<li>Content recommendations</li>
-<li>Similar content discovery</li>
-<li>Trending topic detection</li>
-<li>
-<p>User preference learning</p>
-</li>
-<li>
-<p><strong>Knowledge Management</strong></p>
-</li>
-<li>Mind map generation (Supports <strong>Chunking/Structuring</strong>)</li>
-<li>Knowledge graph visualization</li>
-<li>Learning path suggestions</li>
-<li>Progress tracking</li>
-</ol>
 <h3 id="technical-requirements">Technical Requirements</h3>
 <ol>
 <li><strong>Frontend</strong></li>
@@ -1171,16 +1154,7 @@
 <li>FastAPI for API endpoints</li>
 <li>Redis for caching</li>
 <li>SQLAlchemy for data persistence</li>
-<li>
-<p>Background job processing</p>
-</li>
-<li>
-<p><strong>Infrastructure</strong></p>
-</li>
-<li>Docker containerization</li>
-<li>GitHub Actions CI/CD</li>
-<li>Monitoring and logging</li>
-<li>Security best practices</li>
+<li>Background job processing</li>
 </ol>
 <h3 id="quality-assurance">Quality Assurance</h3>
 <ol>
@@ -1197,32 +1171,18 @@
 <li>API documentation</li>
 <li>User guides</li>
 <li>Development setup guide</li>
-<li>Contribution guidelines</li>
-</ol>
-<h2 id="future-vision">Future Vision</h2>
-<ul>
-<li><strong>Streamlit Frontend for Interactive Control</strong>: Develop a web-based user interface using Streamlit. This frontend will allow users to:<ul>
-<li>Configure and trigger the fetching of content from various sources (Reddit, YouTube, RSS, websites, etc.).</li>
-<li>Review, filter, sort, and select specific content items for summarization.</li>
-<li>Define summarization parameters using the Prompt Creator.</li>
-<li>View and export the generated summary.</li>
-<li>Compile a unified list of selected URLs for further processing.</li>
-</ul>
+<li>
+<p>Contribution guidelines</p>
 </li>
-<li><strong>Expanded Source Integration</strong>: Add support for more content sources like RSS feeds, specific websites, Twitter lists, Hacker News, etc.</li>
-<li><strong>YouTube Integration</strong>: Expand the software to include YouTube as a source. This would involve fetching URLs for new videos from specific YouTubers or categories over a defined period. This feature would allow users to track video content trends, monitor specific channels, or gather data for content analysis.</li>
-<li><strong>User Preferences and Priority Matrix</strong>: Enhance the software by allowing users to specify their interests and priorities. Implement a priority matrix to categorize content based on urgency and importance, tailored to user preferences. Consider using a large language model (LLM) for impact assessment to determine the relevance and potential impact of content based on user-defined criteria.</li>
-<li><strong>Seniority Levels</strong>: Introduce categorization of content based on different seniority levels like beginner, medior, and senior. This will help tailor the relevance of news and information to the user's experience level, ensuring that the content is appropriately challenging and informative.</li>
-<li><strong>Weekly Implementation Suggestion</strong>: Instead of a fixed 1-hour project, provide a weekly suggestion on how to implement the information gained. This could be a project, a new tool to explore, or a technique to try. The goal is to encourage users to apply the information in a practical context, fostering continuous learning and engagement.</li>
-<li><strong>AI Podcasts from Top Sources</strong>: Currently, AI podcasts are built based on one subreddit. Expand this feature to create podcasts using the ranked top 50 information sources per category. This approach will provide a broader and more diverse range of content, enhancing the podcast's value and appeal to a wider audience.</li>
-<li><strong>Highest Impact of the Week Podcast</strong>: Create a podcast focusing on the top priority news sources only. This "Highest Impact of the Week" podcast will highlight the most significant and impactful information, providing users with a concise and valuable summary of the week's most important developments.</li>
+<li>
+<p><strong>Highest Impact of the Week Podcast</strong>: Create a podcast focusing on the top priority news sources only. This "Highest Impact of the Week" podcast will highlight the most significant and impactful information, providing users with a concise and valuable summary of the week's most important developments.</p>
+</li>
 <li><strong>Text-to-Speech (TTS) Integration</strong>: Add functionality to convert the generated summary/script into an actual audio file (podcast).</li>
 <li><strong>Mind Maps for Information Categories</strong>: Implement the ability to create mind maps for each information category. This will help users visualize and organize content within specific areas of interest.</li>
 <li><strong>Mind Maps for Highest Impact Sources</strong>: Create mind maps specifically for the curated highest impact of the week information sources. This will provide users with a visual representation of the most significant content, aiding in understanding and retention.</li>
-<li><strong>Enhanced Mind Maps with LLMs</strong>: Utilize powerful large language models (LLMs) to enhance mind maps by providing additional context and a broader perspective. This will allow users to gain a deeper understanding and see the bigger picture, beyond the restricted news sources in NotebookLM.</li>
 <li><strong>Dynamic Knowledge Profile</strong>: Use an LLM to analyze the content the user consumes and interacts with (clicks, time spent, feedback on weekly suggestions). Map this to an internal graph of concepts relevant to their field (e.g., data engineering) to build a dynamic user knowledge profile for deeper personalization. (Supports <strong>Contextualization/Elaboration</strong>)</li>
 <li><strong>Hyper-Personalized Relevance</strong>: Leverage the dynamic knowledge profile to tailor content recommendations and summaries, connecting new information to the user's existing knowledge base. (Supports <strong>Contextualization/Elaboration</strong>)</li>
-</ul>
+</ol>
 
 
 
