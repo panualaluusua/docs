@@ -1,0 +1,3223 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/frontend/TESTING_GUIDE/">
+      
+      
+        <link rel="prev" href="../STATE_MANAGEMENT/">
+      
+      
+        <link rel="next" href="../UI_DOCUMENTATION/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Frontend Testing Guide - Keskitetty dokumentaatio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frontend-testing-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-header__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Keskitetty dokumentaatio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Frontend Testing Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-nav__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Keskitetty dokumentaatio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Insighthub
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Insighthub
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GETTING_STARTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with InsightHub Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VISION
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document (PRD)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/AI_PIPELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Integration Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_OPERATIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Operational Procedures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_TRAINING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Training Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_WORKFLOWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Workflow Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/SUPABASE_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Performance &amp; Visual Regression Testing Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../QUALITY_ASSURANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎯 Frontend Quality Assurance Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../STATE_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend State Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Frontend Testing Guide
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Testing Guide
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-stack-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Stack Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framework-vitest-testing-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framework: Vitest + Testing Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framework: Vitest + Testing Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Utilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      End-to-End Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-to-End Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framework-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framework: Playwright
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framework: Playwright">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-test-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Test Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessibility Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-accessibility-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Accessibility Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-accessibility-testing-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Accessibility Testing Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lighthouse-ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lighthouse CI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-web-vitals-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Web Vitals Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Web Vitals Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-web-vitals-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Web Vitals Measurement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Performance Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-lighthouse-ci-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Lighthouse CI Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enhanced Lighthouse CI Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desktop-performance-budgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desktop Performance Budgets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mobile-performance-budgets-more-lenient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mobile Performance Budgets (More Lenient)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-budgets-enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Budgets Enforcement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundle-size-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bundle Size Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-regression-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Regression Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Regression Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-screenshot-testing-with-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Screenshot Testing with Playwright
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprehensive Screenshot Testing with Playwright">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-page-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Page Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-responsive-design-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Responsive Design Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-component-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Component Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form-state-comprehensive-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form State Comprehensive Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-consistency-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theme Consistency Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-and-error-state-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading and Error State Capture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshot-management-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screenshot Management Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-commands-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Commands Enhancement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#component-test-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Test Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e2e-test-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2E Test Template
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Gates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UI_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📚 UI Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ideas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ideas/Learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from InsightHub Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ideas/MINDMAP_IDEAS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mind Map Application Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Brainstorm: Building an n8n Workflow Copilot with a RAG System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../planning/VIDEO_STORY_OUTLINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub-videon käsikirjoitus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🤖 AI Testing Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright MCP Integration with Vision Capabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/TESTING_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keskitetty dokumentaatio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Keskitetty dokumentaatio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/KUVAUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projektin kuvaus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mitä opin projektin aikana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Panualaluusua.github.io
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Panualaluusua.github.io
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtävälista Portfolion Viimeistelyyn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from Building My Portfolio Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/project-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Overview: panualaluusua.github.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pyorailytapahtumat
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Pyorailytapahtumat
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: Pyöräilytapahtumat Suomessa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Streamlit e sm
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Streamlit e sm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the E-pyöräilyn SM-kisat Results Service Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: E-pyöräilyn SM-kisojen Tulospalvelu Frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-stack-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Stack Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framework-vitest-testing-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framework: Vitest + Testing Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framework: Vitest + Testing Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Utilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      End-to-End Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End-to-End Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#framework-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Framework: Playwright
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framework: Playwright">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-test-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Test Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessibility Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-accessibility-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Accessibility Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-accessibility-testing-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Accessibility Testing Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lighthouse-ci-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lighthouse CI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-web-vitals-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Web Vitals Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Web Vitals Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-web-vitals-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Web Vitals Measurement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Performance Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-lighthouse-ci-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Lighthouse CI Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enhanced Lighthouse CI Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desktop-performance-budgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desktop Performance Budgets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mobile-performance-budgets-more-lenient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mobile Performance Budgets (More Lenient)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-budgets-enforcement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Budgets Enforcement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundle-size-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bundle Size Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-regression-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Regression Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Regression Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-screenshot-testing-with-playwright" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Screenshot Testing with Playwright
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprehensive Screenshot Testing with Playwright">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-page-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Page Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-responsive-design-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Responsive Design Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-component-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigation Component Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#form-state-comprehensive-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form State Comprehensive Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theme-consistency-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theme Consistency Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-and-error-state-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading and Error State Capture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screenshot-management-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screenshot Management Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-commands-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Commands Enhancement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#component-test-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Test Template
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e2e-test-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      E2E Test Template
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-actions-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Gates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="frontend-testing-guide">Frontend Testing Guide</h1>
+<p>This guide covers the comprehensive testing infrastructure for the InsightHub frontend, including unit testing, integration testing, accessibility testing, performance monitoring, and visual regression testing.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#testing-stack-overview">Testing Stack Overview</a></li>
+<li><a href="#unit-testing">Unit Testing</a></li>
+<li><a href="#integration-testing">Integration Testing</a></li>
+<li><a href="#end-to-end-testing">End-to-End Testing</a></li>
+<li><a href="#accessibility-testing">Accessibility Testing</a></li>
+<li><a href="#performance-testing">Performance Testing</a></li>
+<li><a href="#visual-regression-testing">Visual Regression Testing</a></li>
+<li><a href="#test-commands">Test Commands</a></li>
+<li><a href="#writing-tests">Writing Tests</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#cicd-integration">CI/CD Integration</a></li>
+</ol>
+<h2 id="testing-stack-overview">Testing Stack Overview</h2>
+<p>Our frontend uses a multi-layered testing approach:</p>
+<ul>
+<li><strong>Unit Testing</strong>: Vitest + Testing Library for component testing</li>
+<li><strong>E2E Testing</strong>: Playwright for cross-browser end-to-end testing</li>
+<li><strong>Performance</strong>: Lighthouse CI + Custom performance monitoring</li>
+<li><strong>Visual Regression</strong>: Playwright screenshot testing</li>
+<li><strong>Accessibility</strong>: axe-core integration with Playwright</li>
+<li><strong>Type Safety</strong>: TypeScript for compile-time error detection</li>
+</ul>
+<h2 id="unit-testing">Unit Testing</h2>
+<h3 id="framework-vitest-testing-library">Framework: Vitest + Testing Library</h3>
+<p>Unit tests are located in <code>src/lib/components/*.test.ts</code> files alongside components.</p>
+<h4 id="test-setup">Test Setup</h4>
+<p>The test environment includes:
+- <strong>DOM Environment</strong>: JSDOM for browser API simulation
+- <strong>Mocks</strong>: Pre-configured mocks for IntersectionObserver, ResizeObserver, matchMedia
+- <strong>Providers</strong>: Mock Supabase client and store contexts
+- <strong>Accessibility</strong>: Built-in axe-core integration</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example component test</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">,</span><span class="w"> </span><span class="nx">userEvent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../test-utils/render&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Button</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Button.svelte&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Button Component&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;renders with required props&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">Button</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Test Button&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;Test Button&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="test-utilities">Test Utilities</h4>
+<p><strong><code>src/lib/test-utils/render.ts</code></strong> provides:
+- <code>renderWithProviders()</code>: Renders components with mock contexts
+- <code>mockSupabaseClient</code>: Pre-configured Supabase mock
+- <code>getAccessibilityViolations()</code>: Accessibility testing helper
+- <code>measureRenderTime()</code>: Performance testing helper</p>
+<h2 id="integration-testing">Integration Testing</h2>
+<p>Integration tests verify component interactions and data flow. These tests use the same Vitest setup but focus on multiple components working together.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example integration test</span>
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;form submission flow&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">setup</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockSubmit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">SignUpForm</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onSubmit</span><span class="o">:</span><span class="w"> </span><span class="kt">mockSubmit</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByLabelText</span><span class="p">(</span><span class="s1">&#39;Email&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;test@example.com&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="kr">type</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByLabelText</span><span class="p">(</span><span class="s1">&#39;Password&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;password123&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Sign Up&#39;</span><span class="w"> </span><span class="p">}));</span>
+
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockSubmit</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test@example.com&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;password123&#39;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="end-to-end-testing">End-to-End Testing</h2>
+<h3 id="framework-playwright">Framework: Playwright</h3>
+<p>E2E tests are in the <code>tests/</code> directory and cover complete user workflows.</p>
+<h4 id="configuration">Configuration</h4>
+<p><strong><code>playwright.config.ts</code></strong> includes:
+- Cross-browser testing (Chromium, Firefox, WebKit)
+- Mobile viewport testing
+- CI/CD optimizations
+- Accessibility testing integration</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example E2E test</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@playwright/test&#39;</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;user authentication flow&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/signin&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;[data-testid=&quot;email-input&quot;]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test@example.com&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;[data-testid=&quot;password-input&quot;]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;password123&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;[data-testid=&quot;signin-button&quot;]&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s1">&#39;/dashboard&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;Welcome&#39;</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="key-test-files">Key Test Files</h4>
+<ul>
+<li><code>accessibility.spec.ts</code>: Accessibility compliance testing</li>
+<li><code>auth.spec.ts</code>: Authentication workflows</li>
+<li><code>navigation.spec.ts</code>: Navigation and routing</li>
+<li><code>visual-regression.spec.ts</code>: Visual consistency testing</li>
+<li><code>performance-monitoring.spec.ts</code>: Performance metrics validation</li>
+</ul>
+<h2 id="accessibility-testing">Accessibility Testing</h2>
+<h3 id="automated-accessibility-testing">Automated Accessibility Testing</h3>
+<p>Every page and component is tested for WCAG compliance using axe-core:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;homepage accessibility&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">accessibilityScanResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AxeBuilder</span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">}).</span><span class="nx">analyze</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">accessibilityScanResults</span><span class="p">.</span><span class="nx">violations</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([]);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="manual-accessibility-testing-checklist">Manual Accessibility Testing Checklist</h3>
+<ul>
+<li>[ ] Keyboard navigation works for all interactive elements</li>
+<li>[ ] Screen reader announcements are appropriate</li>
+<li>[ ] Color contrast meets WCAG AA standards</li>
+<li>[ ] Focus indicators are visible and clear</li>
+<li>[ ] Form labels are properly associated</li>
+<li>[ ] Error messages are accessible</li>
+</ul>
+<h2 id="performance-testing">Performance Testing</h2>
+<h3 id="lighthouse-ci-integration">Lighthouse CI Integration</h3>
+<p><strong><code>lighthouserc.json</code></strong> defines performance budgets:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;assertions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;categories:performance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;minScore&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;first-contentful-paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1800</span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;largest-contentful-paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;first-input-delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">&quot;cumulative-layout-shift&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">}]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="core-web-vitals-monitoring">Core Web Vitals Monitoring</h3>
+<p><strong><code>tests/performance-monitoring.spec.ts</code></strong> provides comprehensive performance tracking:</p>
+<h4 id="core-web-vitals-measurement">Core Web Vitals Measurement</h4>
+<ul>
+<li><strong>First Contentful Paint (FCP)</strong>: &lt; 1.8s (homepage), &lt; 2.0s (dashboard)</li>
+<li><strong>Largest Contentful Paint (LCP)</strong>: &lt; 2.5s using Performance Observer API</li>
+<li><strong>First Input Delay (FID)</strong>: &lt; 100ms with real user interaction timing</li>
+<li><strong>Cumulative Layout Shift (CLS)</strong>: &lt; 0.1 with automatic layout shift detection</li>
+<li><strong>Time to First Byte (TTFB)</strong>: &lt; 600ms (homepage), &lt; 800ms (dashboard)</li>
+<li><strong>Time to Interactive (TTI)</strong>: Measured via Navigation Timing API</li>
+</ul>
+<h4 id="advanced-performance-analysis">Advanced Performance Analysis</h4>
+<ul>
+<li><strong>Bundle Size Analysis</strong>: Real-time network interception tracking JavaScript (&lt; 500KB), CSS (&lt; 100KB), fonts (&lt; 100KB)</li>
+<li><strong>Resource Count Monitoring</strong>: Script files (&lt; 20), stylesheets (&lt; 5), images, fonts</li>
+<li><strong>Memory Usage Tracking</strong>: JavaScript heap size monitoring with 50MB limit and 80% usage threshold</li>
+<li><strong>Interactive Performance Testing</strong>: Button click responsiveness and UI interaction timing</li>
+<li><strong>Network Performance Analysis</strong>: Request timing, response analysis, and resource loading metrics</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example: Memory monitoring implementation</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">memoryInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;memory&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">performance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">performance</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">).</span><span class="nx">memory</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">usedJSHeapSize</span><span class="o">:</span><span class="w"> </span><span class="kt">memory.usedJSHeapSize</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">totalJSHeapSize</span><span class="o">:</span><span class="w"> </span><span class="kt">memory.totalJSHeapSize</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">jsHeapSizeLimit</span><span class="o">:</span><span class="w"> </span><span class="kt">memory.jsHeapSizeLimit</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="enhanced-lighthouse-ci-configuration">Enhanced Lighthouse CI Configuration</h3>
+<p><strong><code>lighthouserc.json</code></strong> defines comprehensive performance budgets with dual desktop/mobile configurations:</p>
+<h4 id="desktop-performance-budgets">Desktop Performance Budgets</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;categories:performance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;minScore&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;first-contentful-paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1800</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;largest-contentful-paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;cumulative-layout-shift&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;total-blocking-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;speed-index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">&quot;interactive&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;maxNumericValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2800</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="mobile-performance-budgets-more-lenient">Mobile Performance Budgets (More Lenient)</h4>
+<ul>
+<li>Performance Score: ≥ 85% (vs 90% desktop)</li>
+<li>FCP: &lt; 2.2s (vs 1.8s desktop)</li>
+<li>LCP: &lt; 3.0s (vs 2.5s desktop)</li>
+<li>TBT: &lt; 350ms (vs 200ms desktop)</li>
+</ul>
+<h4 id="resource-budgets-enforcement">Resource Budgets Enforcement</h4>
+<ul>
+<li><strong>Scripts</strong>: 500KB max, 20 files max</li>
+<li><strong>Stylesheets</strong>: 100KB max, 5 files max</li>
+<li><strong>Images</strong>: 1MB max, 20 files max  </li>
+<li><strong>Fonts</strong>: 150KB max, 5 files max</li>
+<li><strong>Documents</strong>: 100KB max</li>
+</ul>
+<h3 id="bundle-size-analysis">Bundle Size Analysis</h3>
+<p>Automated tracking of:
+- JavaScript bundle size: &lt; 500KB
+- CSS bundle size: &lt; 100KB
+- Font files: &lt; 150KB
+- Image files: &lt; 1MB
+- Script count: &lt; 20 files
+- Network request analysis with response timing</p>
+<h2 id="visual-regression-testing">Visual Regression Testing</h2>
+<h3 id="comprehensive-screenshot-testing-with-playwright">Comprehensive Screenshot Testing with Playwright</h3>
+<p><strong><code>tests/visual-regression.spec.ts</code></strong> provides enterprise-grade visual consistency testing:</p>
+<h4 id="full-page-coverage">Full Page Coverage</h4>
+<ul>
+<li><strong>Complete Route Testing</strong>: Homepage, dashboard, feed, signin, signup, theme pages</li>
+<li><strong>Full Page Screenshots</strong>: Captures entire page with disabled animations for consistency</li>
+<li><strong>Viewport Screenshots</strong>: Above-the-fold content testing for faster feedback</li>
+</ul>
+<h4 id="advanced-responsive-design-testing">Advanced Responsive Design Testing</h4>
+<p>Tests across <strong>5 different viewport sizes</strong>:
+- <strong>Mobile</strong>: 375×667 (iPhone SE)
+- <strong>Tablet</strong>: 768×1024 (iPad Portrait)<br />
+- <strong>Tablet Landscape</strong>: 1024×768 (iPad Landscape)
+- <strong>Desktop</strong>: 1440×900 (Standard Desktop)
+- <strong>Desktop Large</strong>: 1920×1080 (Large Desktop)</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example: Multi-viewport responsive testing</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">viewports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">375</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">667</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mobile&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">768</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tablet&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">768</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tablet-landscape&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">1440</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">900</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;desktop&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">1920</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">1080</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;desktop-large&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+</code></pre></div>
+<h4 id="navigation-component-testing">Navigation Component Testing</h4>
+<ul>
+<li><strong>Desktop Navigation</strong>: Full navigation component screenshots</li>
+<li><strong>Mobile Navigation</strong>: Mobile nav trigger and expanded menu testing</li>
+<li><strong>Navigation States</strong>: Open/closed states with transition handling</li>
+</ul>
+<h4 id="form-state-comprehensive-testing">Form State Comprehensive Testing</h4>
+<ul>
+<li><strong>Empty Form State</strong>: Baseline form appearance</li>
+<li><strong>Focus States</strong>: Individual input field focus indicators</li>
+<li><strong>Filled States</strong>: Forms with entered data</li>
+<li><strong>Validation Error States</strong>: Error messages and invalid field styling</li>
+<li><strong>Loading States</strong>: Form submission and processing states</li>
+</ul>
+<h4 id="theme-consistency-validation">Theme Consistency Validation</h4>
+<ul>
+<li><strong>Default Theme</strong>: Baseline theme appearance</li>
+<li><strong>Theme Toggle Testing</strong>: Light/dark mode transitions</li>
+<li><strong>Theme Persistence</strong>: Visual consistency after theme changes</li>
+</ul>
+<h4 id="loading-and-error-state-capture">Loading and Error State Capture</h4>
+<ul>
+<li><strong>Loading States</strong>: Network request delays simulated to capture loading UI</li>
+<li><strong>Error States</strong>: Form validation errors and API error states</li>
+<li><strong>Timeout Handling</strong>: Controlled delays for stable screenshot capture</li>
+</ul>
+<h3 id="screenshot-management-best-practices">Screenshot Management Best Practices</h3>
+<ul>
+<li><strong>Baseline Creation</strong>: Initial screenshots generated on first test run</li>
+<li><strong>Automatic Updates</strong>: Use <code>npm run test:visual:update</code> to update baselines</li>
+<li><strong>Diff Analysis</strong>: Failed tests generate visual diffs in <code>test-results/</code></li>
+<li><strong>Animation Disable</strong>: All screenshots taken with <code>animations: 'disabled'</code></li>
+<li><strong>Network Stability</strong>: <code>waitForLoadState('networkidle')</code> ensures stable captures</li>
+</ul>
+<h3 id="test-commands-enhancement">Test Commands Enhancement</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Visual regression specific commands</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual<span class="w">            </span><span class="c1"># Run visual regression tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual:update<span class="w">     </span><span class="c1"># Update visual baselines</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual:headed<span class="w">     </span><span class="c1"># Run with browser UI for debugging</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual:mobile<span class="w">     </span><span class="c1"># Run mobile-specific visual tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual:desktop<span class="w">    </span><span class="c1"># Run desktop-specific visual tests</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;responsive homepage design&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">375</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">667</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mobile&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">768</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;tablet&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">1440</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">900</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;desktop&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">viewport</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">viewports</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">setViewportSize</span><span class="p">(</span><span class="nx">viewport</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveScreenshot</span><span class="p">(</span><span class="sb">`homepage-</span><span class="si">${</span><span class="nx">viewport</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">.png`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="test-commands">Test Commands</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Unit tests</span>
+npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span><span class="w">                    </span><span class="c1"># Run unit tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:watch<span class="w">             </span><span class="c1"># Run tests in watch mode</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:coverage<span class="w">          </span><span class="c1"># Generate coverage report</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:ui<span class="w">                </span><span class="c1"># Open Vitest UI</span>
+
+<span class="c1"># E2E tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e<span class="w">               </span><span class="c1"># Run all E2E tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e:headed<span class="w">        </span><span class="c1"># Run with browser UI</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e:debug<span class="w">         </span><span class="c1"># Run with debugger</span>
+
+<span class="c1"># Specific test types</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:accessibility<span class="w">     </span><span class="c1"># Run accessibility tests only</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual<span class="w">            </span><span class="c1"># Run visual regression tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:performance<span class="w">       </span><span class="c1"># Run performance tests</span>
+
+<span class="c1"># Lighthouse CI</span>
+npm<span class="w"> </span>run<span class="w"> </span>lighthouse<span class="w">             </span><span class="c1"># Run Lighthouse audits</span>
+npm<span class="w"> </span>run<span class="w"> </span>lighthouse:ci<span class="w">          </span><span class="c1"># Run in CI mode</span>
+
+<span class="c1"># Test management</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:install<span class="w">           </span><span class="c1"># Install Playwright browsers</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:report<span class="w">            </span><span class="c1"># Open test report</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:clean<span class="w">             </span><span class="c1"># Clean test artifacts</span>
+</code></pre></div>
+<h2 id="writing-tests">Writing Tests</h2>
+<h3 id="component-test-template">Component Test Template</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">beforeEach</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vitest&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">,</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">,</span><span class="w"> </span><span class="nx">getAccessibilityViolations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../test-utils/render&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ComponentName</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./ComponentName.svelte&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;ComponentName&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Basic Rendering&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;renders with required props&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">ComponentName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* required props */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;takes a snapshot&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">ComponentName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* props */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Interactions&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;handles user interactions&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userEvent</span><span class="p">.</span><span class="nx">setup</span><span class="p">();</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">ComponentName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kt">mockHandler</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockHandler</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Accessibility&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;has no accessibility violations&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderWithProviders</span><span class="p">(</span><span class="nx">ComponentName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* props */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">violations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getAccessibilityViolations</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">container</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">violations</span><span class="p">).</span><span class="nx">toHaveLength</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="e2e-test-template">E2E Test Template</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@playwright/test&#39;</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Feature Name&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">.</span><span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Setup common to all tests</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;should perform main user flow&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Arrange</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">waitForLoadState</span><span class="p">(</span><span class="s1">&#39;networkidle&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Act</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">&#39;[data-testid=&quot;action-button&quot;]&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;[data-testid=&quot;input-field&quot;]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test value&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Assert</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;Expected result&#39;</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;should handle error states&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Test error handling</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="test-organization">Test Organization</h3>
+<ol>
+<li><strong>Arrange, Act, Assert</strong>: Structure tests clearly</li>
+<li><strong>Descriptive Names</strong>: Use descriptive test and describe block names</li>
+<li><strong>Single Responsibility</strong>: One assertion per test when possible</li>
+<li><strong>Test Independence</strong>: Tests should not depend on each other</li>
+</ol>
+<h3 id="performance-testing_1">Performance Testing</h3>
+<ol>
+<li><strong>Realistic Conditions</strong>: Test under realistic network and device conditions</li>
+<li><strong>Multiple Runs</strong>: Use average of multiple runs for performance metrics</li>
+<li><strong>Regression Prevention</strong>: Monitor performance trends over time</li>
+<li><strong>Budget Enforcement</strong>: Fail builds that exceed performance budgets</li>
+</ol>
+<h3 id="accessibility-testing_1">Accessibility Testing</h3>
+<ol>
+<li><strong>Automated + Manual</strong>: Combine automated tools with manual testing</li>
+<li><strong>Real Devices</strong>: Test with actual assistive technologies when possible</li>
+<li><strong>Multiple Impairments</strong>: Consider various disability types</li>
+<li><strong>Progressive Enhancement</strong>: Test with JavaScript disabled</li>
+</ol>
+<h3 id="visual-testing">Visual Testing</h3>
+<ol>
+<li><strong>Consistent Environment</strong>: Use consistent viewport sizes and themes</li>
+<li><strong>Stable Content</strong>: Avoid time-dependent or random content in screenshots</li>
+<li><strong>Critical Paths</strong>: Focus on user-critical visual elements</li>
+<li><strong>Cross-Browser</strong>: Test visual consistency across browsers</li>
+</ol>
+<h2 id="cicd-integration">CI/CD Integration</h2>
+<h3 id="github-actions-workflow">GitHub Actions Workflow</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Frontend Tests</span>
+
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;18&#39;</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;npm&#39;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run unit tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run test:coverage</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Playwright</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright install</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run E2E tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run test:e2e</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Lighthouse CI</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run lighthouse:ci</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload test artifacts</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v3</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-results</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">test-results/</span>
+<span class="w">            </span><span class="no">playwright-report/</span>
+<span class="w">            </span><span class="no">coverage/</span>
+</code></pre></div>
+<h3 id="quality-gates">Quality Gates</h3>
+<p>Tests must pass these criteria:</p>
+<ul>
+<li><strong>Unit Test Coverage</strong>: &gt; 80%</li>
+<li><strong>E2E Test Pass Rate</strong>: 100%</li>
+<li><strong>Accessibility Violations</strong>: 0</li>
+<li><strong>Performance Score</strong>: &gt; 90</li>
+<li><strong>Visual Regression</strong>: No unexpected changes</li>
+</ul>
+<h3 id="monitoring">Monitoring</h3>
+<ul>
+<li><strong>Performance Trends</strong>: Track Core Web Vitals over time</li>
+<li><strong>Test Reliability</strong>: Monitor flaky test rates</li>
+<li><strong>Coverage Trends</strong>: Ensure coverage doesn't decrease</li>
+<li><strong>Bundle Size</strong>: Alert on significant size increases</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Tests timing out</strong>:
+- Increase timeout in playwright.config.ts
+- Add proper wait conditions
+- Check for infinite loops or blocking operations</p>
+<p><strong>Visual regression failures</strong>:
+- Review screenshot diffs in test-results/
+- Update baselines if changes are intentional
+- Check for non-deterministic content</p>
+<p><strong>Performance test failures</strong>:
+- Check for resource loading issues
+- Verify network conditions
+- Review bundle size changes</p>
+<p><strong>Accessibility violations</strong>:
+- Review specific axe-core violations
+- Check color contrast ratios
+- Verify ARIA labels and roles</p>
+<h3 id="debug-commands">Debug Commands</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Debug specific test</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e<span class="w"> </span>--<span class="w"> </span>--debug<span class="w"> </span>--grep<span class="w"> </span><span class="s2">&quot;test name&quot;</span>
+
+<span class="c1"># Run with browser UI</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e:headed
+
+<span class="c1"># Generate trace for debugging</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:e2e<span class="w"> </span>--<span class="w"> </span>--trace<span class="w"> </span>on
+
+<span class="c1"># Update visual baselines</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:visual:update
+</code></pre></div>
+<hr />
+<p>This testing infrastructure ensures high-quality, accessible, and performant frontend code. For questions or improvements, please refer to the team's testing standards documentation. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

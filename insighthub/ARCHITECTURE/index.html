@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/todo/">
+        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/ARCHITECTURE/">
       
       
-        <link rel="prev" href="../VISION/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../keskitetty_dokumentaatio/KUVAUS/">
+        <link rel="next" href="../GETTING_STARTED/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>TODO: Automatisoitu työjono uusien sisältöjen hakemiseen, arviointiin ja esittämiseen - Keskitetty dokumentaatio</title>
+        <title>InsightHub Architecture - Keskitetty dokumentaatio</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#todo-automatisoitu-tyojono-uusien-sisaltojen-hakemiseen-arviointiin-ja-esittamiseen" class="md-skip">
+        <a href="#insighthub-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TODO: Automatisoitu työjono uusien sisältöjen hakemiseen, arviointiin ja esittämiseen
+              InsightHub Architecture
             
           </span>
         </div>
@@ -236,12 +236,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../Learnings/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Learnings from InsightHub Project
+    InsightHub Documentation
     
   </span>
   
@@ -256,20 +256,80 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../MINDMAP_IDEAS/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Architecture
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Mind Map Application Ideas
+    InsightHub Architecture
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -282,58 +342,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
+      <a href="../GETTING_STARTED/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Product Requirements Document (PRD)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../PROJECT_DESCRIPTION_LONGFORM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    InsightHub: Projektikuvaus (pitkä muoto)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../VIDEO_STORY_OUTLINE/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    InsightHub-videon käsikirjoitus
+    Getting Started with InsightHub Development
     
   </span>
   
@@ -371,29 +385,755 @@
                 
   
   
+  
+  
     
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
         
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    TODO: Automatisoitu työjono uusien sisältöjen hakemiseen, arviointiin ja esittämiseen
+    Product Requirements Document (PRD)
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/AI_PIPELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/LANGSMITH_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Integration Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/LANGSMITH_OPERATIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Operational Procedures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/LANGSMITH_TRAINING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Training Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/LANGSMITH_WORKFLOWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Workflow Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/SUPABASE_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Performance &amp; Visual Regression Testing Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/QUALITY_ASSURANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎯 Frontend Quality Assurance Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/STATE_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend State Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/TESTING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/UI_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📚 UI Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ideas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/Learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from InsightHub Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/MINDMAP_IDEAS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mind Map Application Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Brainstorm: Building an n8n Workflow Copilot with a RAG System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../planning/VIDEO_STORY_OUTLINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub-videon käsikirjoitus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🤖 AI Testing Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright MCP Integration with Vision Capabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/TESTING_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -837,6 +1577,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -851,134 +1617,36 @@
 
 
 
-<h1 id="todo-automatisoitu-tyojono-uusien-sisaltojen-hakemiseen-arviointiin-ja-esittamiseen">TODO: Automatisoitu työjono uusien sisältöjen hakemiseen, arviointiin ja esittämiseen</h1>
+<h1 id="insighthub-architecture">InsightHub Architecture</h1>
+<p>This document provides a high-level overview of the InsightHub system architecture.</p>
+<h2 id="core-components">Core Components</h2>
+<p>InsightHub is comprised of two main components:</p>
+<ol>
+<li>
+<p><strong>Backend:</strong> A Python-based application responsible for:</p>
 <ul>
-<li>Rakennetaan järjestelmä, joka hakee suuren määrän uusia postauksia, uutisia, videoita, tiedeartikkeleita jne.<ul>
-<li>Sisältöjen tulee olla uusia viime ajokertaan nähden (eli vain uudet sisällöt huomioidaan).</li>
+<li>Fetching data from external sources (Reddit, YouTube).</li>
+<li>Processing and enriching data using AI/ML models (LangChain).</li>
+<li>Providing a Streamlit web interface.</li>
+<li>Managing data persistence.</li>
 </ul>
 </li>
-<li>Kielimalli arvioi jokaisen sisällön niiden "impactin" tai arvokkuuden perusteella suhteessa omaan profiiliisi.<ul>
-<li>Profiili voi sisältää kiinnostuksen kohteita, aiempia preferenssejä yms.</li>
-<li>Malli tuottaa ranking-listan: mikä sisältö on arvokkainta, mikä vähiten.</li>
-</ul>
-</li>
-<li>Uudet uutiset ja sisällöt esitetään web-sovelluksessa modernissa scrollattavassa näkymässä (vrt. Jodel, Reddit)<ul>
-<li>Käyttäjä voi selata sisältöjä helposti ja nopeasti.</li>
-<li>Mahdollisuus merkitä kiinnostavat sisällöt talteen tai reagoida niihin.</li>
-</ul>
-</li>
-<li>Työjono pyörii automaattisesti taustalla ja päivittyy säännöllisesti.</li>
-</ul>
-<p>Tämä kokonaisuus automatisoi tiedonkeruun, arvioinnin ja esittämisen, ja tekee uusien merkityksellisten sisältöjen löytämisestä helppoa ja tehokasta.</p>
-<h1 id="todo-lahteet-datainsinoorityohon-keskittyvia-tietolahteita">TODO: Lähteet Datainsinöörityöhön Keskittyviä Tietolähteitä</h1>
-<p>Seuraavaksi voisimme lisätä ja täydentää lähteitä, jotka ovat hyödyllisiä datainsinöörityöhön liittyen. Alla on alustava lista, jota voi täydentää jatkossa.</p>
-<h2 id="1-blogit-ja-verkkosivustot">1. Blogit ja Verkkosivustot</h2>
+<li>
+<p><strong>Frontend:</strong> A SvelteKit single-page application (SPA) that provides the user interface for:</p>
 <ul>
-<li><strong>Seattle Data Guy (Benjamin Rogojan):</strong></li>
-<li>Blogi/Verkkosivusto: https://www.theseattledataguy.com/</li>
-<li>YouTube: https://www.youtube.com/@SeattleDataGuy</li>
-<li>
-<p>Sisältöä: Paljon käytännönläheistä sisältöä datatekniikasta, datamallinnuksesta, ETL-prosesseista, SQL:stä ja uraneuvoja datainsinööreille. Hyvin arvostettu alalla.</p>
-</li>
-<li>
-<p><strong>Start Data Engineering (Andreas Kretz):</strong></p>
-</li>
-<li>Verkkosivusto: https://www.startdataengineering.com/</li>
-<li>YouTube: https://www.youtube.com/@StartDataEngineering</li>
-<li>
-<p>Sisältöä: Kursseja, artikkeleita ja videoita, jotka kattavat datatekniikan perusteet ja edistyneemmät aiheet. Erityisen hyvä aloittelijoille ja uranvaihtajille.</p>
-</li>
-<li>
-<p><strong>Data Engineering Weekly:</strong></p>
-</li>
-<li>Uutiskirje/Verkkosivusto: https://www.dataengineeringweekly.com/</li>
-<li>
-<p>Sisältöä: Kuratoitu viikoittainen uutiskirje, joka kokoaa yhteen parhaat datatekniikkaan liittyvät artikkelit, työkalut ja uutiset. Erinomainen tapa pysyä ajan tasalla.</p>
-</li>
-<li>
-<p><strong>dbt Labs Blog:</strong></p>
-</li>
-<li>Blogi: https://www.getdbt.com/blog/</li>
-<li>
-<p>Sisältöä: Vaikka dbt on työkalu, heidän bloginsa käsittelee laajasti analytiikan suunnittelua (analytics engineering), datan muunnoksia, parhaita käytäntöjä ja modernia datastackia. Erittäin relevantti datainsinööreille.</p>
-</li>
-<li>
-<p><strong>Confluent Blog (Apache Kafka):</strong></p>
-</li>
-<li>Blogi: https://www.confluent.io/blog/</li>
-<li>
-<p>Sisältöä: Confluent on Apache Kafkan takana oleva yritys. Heidän bloginsa on johtava resurssi suoratoistodatan käsittelyyn, Kafkaan ja reaaliaikaisiin datarajapintoihin liittyen. Tärkeää monille moderneille data-arkkitehtuureille.</p>
-</li>
-<li>
-<p><strong>Airbyte Blog:</strong></p>
-</li>
-<li>Blogi: https://airbyte.com/blog</li>
-<li>
-<p>Sisältöä: Keskittyy datan integrointiin, ELT-prosesseihin ja avoimen lähdekoodin dataliittimiin. Hyödyllistä tietoa datan siirtämisestä ja yhdistämisestä eri lähteistä.</p>
-</li>
-<li>
-<p><strong>Zach Wilson's Blog:</strong></p>
-</li>
-<li>Blogi: https://zachwilson.tech/</li>
-<li>Sisältöä: Käytännönläheisiä artikkeleita ja pohdintaa datatekniikasta, datan laadusta ja data-alustoista.</li>
+<li>Configuring data sources.</li>
+<li>Displaying aggregated content.</li>
+<li>Interacting with the AI-powered features.</li>
 </ul>
-<h2 id="2-youtube-kanavat-lisaa">2. YouTube-kanavat (lisää)</h2>
-<ul>
-<li><strong>Thu Vu data analytics:</strong></li>
-<li>YouTube: https://www.youtube.com/@ThuvuDataAnalytics</li>
-<li>
-<p>Sisältöä: Keskittyy enemmän data-analytiikkaan, mutta sivuaa usein datatekniikan aiheita ja työkaluja, jotka ovat relevantteja myös insinööreille. Hyviä selityksiä konsepteista.</p>
 </li>
-<li>
-<p><strong>Andreas Kretz (Start Data Engineering):</strong></p>
-</li>
-<li>YouTube: https://www.youtube.com/@StartDataEngineering</li>
-<li>(Mainittu jo blogien yhteydessä, mutta kanava on erinomainen itsessään)</li>
-</ul>
-<h2 id="3-yhteisot">3. Yhteisöt</h2>
-<ul>
-<li><strong>DataTalks.Club:</strong></li>
-<li>Verkkosivusto &amp; Slack: https://datatalks.club/</li>
-<li>
-<p>Sisältöä: Aktiivinen yhteisö, jossa on kursseja (kuten heidän "Data Engineering Zoomcamp"), podcasteja, artikkeleita ja Slack-kanava keskusteluille. Hyvin käytännönläheinen ja yhteisöllinen.</p>
-</li>
-<li>
-<p><strong>r/dataengineering (Reddit):</strong></p>
-</li>
-<li>Reddit: https://www.reddit.com/r/dataengineering/</li>
-<li>
-<p>Sisältöä: Laaja ja aktiivinen yhteisö, jossa keskustellaan työkaluista, arkkitehtuureista, urakysymyksistä ja alan uutisista. Hyvä paikka esittää kysymyksiä ja oppia muilta.</p>
-</li>
-<li>
-<p><strong>Locally Optimistic:</strong></p>
-</li>
-<li>Slack &amp; Blog: https://locallyoptimistic.com/</li>
-<li>Sisältöä: Erityisesti analytiikan suunnitteluun (analytics engineering) ja moderniin datastackiin keskittyvä yhteisö ja blogi. Paljon keskustelua dbt:stä, Snowflakesta ja muista vastaavista työkaluista.</li>
-</ul>
-<h2 id="4-podcastit">4. Podcastit</h2>
-<ul>
-<li><strong>The Data Engineering Podcast:</strong></li>
-<li>
-<p>Sisältöä: Haastatteluja alan johtavien asiantuntijoiden kanssa datatekniikan eri osa-alueista, työkaluista ja trendeistä.</p>
-</li>
-<li>
-<p><strong>Data Engineering Show:</strong></p>
-</li>
-<li>
-<p>Sisältöä: Keskusteluja ja näkemyksiä datatekniikan ammattilaisilta.</p>
-</li>
-<li>
-<p><strong>Monday Morning Data Chat:</strong></p>
-</li>
-<li>
-<p>Sisältöä: Rennompi podcast, jossa käsitellään ajankohtaisia data-alan aiheita, usein datatekniikan näkökulmasta.</p>
-</li>
-<li>
-<p><strong>The Analytics Engineering Podcast (dbt Labs):</strong></p>
-</li>
-<li>Kuvaus: dbt Labsin isännöimä podcast, joka keskittyy analytiikan suunnitteluun (analytics engineering), moderniin datastackiin, dbt:hen ja siihen liittyviin teknologioihin ja käytäntöihin.</li>
-<li>Löydät sen useimmilta podcast-alustoilta hakemalla nimellä "The Analytics Engineering Podcast" tai dbt Labsin verkkosivuilta.</li>
-</ul>
+</ol>
+<h2 id="data-flow">Data Flow</h2>
+<ol>
+<li>The <strong>Frontend</strong> makes requests to the <strong>Backend</strong> API.</li>
+<li>The <strong>Backend</strong> fetches data from external APIs (Reddit, YouTube).</li>
+<li>This data is then processed by the AI pipeline for summarization, scoring, and personalization.</li>
+<li>The processed data is returned to the <strong>Frontend</strong> for display.</li>
+</ol>
 
 
 
