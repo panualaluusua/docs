@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://panualaluusua.github.io/docs/pyorailytapahtumat/LEARNINGS/">
+        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/backend/LANGSMITH_MONITORING/">
       
       
-        <link rel="prev" href="../../panualaluusua.github.io/project-overview/">
+        <link rel="prev" href="../LANGSMITH_INTEGRATION/">
       
       
-        <link rel="next" href="../PROJECT_DESCRIPTION/">
+        <link rel="next" href="../LANGSMITH_OPERATIONS/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Learnings from the Project - Keskitetty dokumentaatio</title>
+        <title>LangSmith Monitoring Dashboard - Keskitetty dokumentaatio</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learnings-from-the-project" class="md-skip">
+        <a href="#langsmith-monitoring-dashboard" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Keskitetty dokumentaatio" class="md-header__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-header__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Learnings from the Project
+              LangSmith Monitoring Dashboard
             
           </span>
         </div>
@@ -178,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Keskitetty dokumentaatio" class="md-nav__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-nav__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,18 +193,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
@@ -220,7 +222,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Insighthub
@@ -234,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -257,7 +259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/ARCHITECTURE/" class="md-nav__link">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
         
   
   
@@ -280,7 +282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/GETTING_STARTED/" class="md-nav__link">
+      <a href="../../GETTING_STARTED/" class="md-nav__link">
         
   
   
@@ -303,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/VISION/" class="md-nav__link">
+      <a href="../../VISION/" class="md-nav__link">
         
   
   
@@ -364,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/archive/PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
+      <a href="../../archive/PRD_automatisoitu_ty%C3%B6jono/" class="md-nav__link">
         
   
   
@@ -433,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
+      <a href="../../audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -456,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/audits/COST_AUDIT_CHECKLIST/" class="md-nav__link">
+      <a href="../../audits/COST_AUDIT_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -479,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/audits/PERFORMANCE_AUDIT_CHECKLIST/" class="md-nav__link">
+      <a href="../../audits/PERFORMANCE_AUDIT_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -502,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/audits/SECURITY_CHECKLIST/" class="md-nav__link">
+      <a href="../../audits/SECURITY_CHECKLIST/" class="md-nav__link">
         
   
   
@@ -530,18 +532,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
         
           
           <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
@@ -557,7 +561,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_7">
             <span class="md-nav__icon md-icon"></span>
             Backend
@@ -571,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/AI_PIPELINE/" class="md-nav__link">
+      <a href="../AI_PIPELINE/" class="md-nav__link">
         
   
   
@@ -594,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/API_REFERENCE/" class="md-nav__link">
+      <a href="../API_REFERENCE/" class="md-nav__link">
         
   
   
@@ -617,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/LANGSMITH_INTEGRATION/" class="md-nav__link">
+      <a href="../LANGSMITH_INTEGRATION/" class="md-nav__link">
         
   
   
@@ -637,10 +641,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../insighthub/backend/LANGSMITH_MONITORING/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Monitoring Dashboard
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -651,6 +677,116 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-high-level-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High-Level Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-setup-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Setup &amp; Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Usage Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-metrics-collected" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Metrics Collected
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-error-handling-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Error Handling &amp; Alerts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-intelligent-recommendation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Intelligent Recommendation Engine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-testing-summary-2025-07-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Testing Summary (2025-07-01)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Future Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -663,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/LANGSMITH_OPERATIONS/" class="md-nav__link">
+      <a href="../LANGSMITH_OPERATIONS/" class="md-nav__link">
         
   
   
@@ -686,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/LANGSMITH_TRAINING/" class="md-nav__link">
+      <a href="../LANGSMITH_TRAINING/" class="md-nav__link">
         
   
   
@@ -709,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/LANGSMITH_WORKFLOWS/" class="md-nav__link">
+      <a href="../LANGSMITH_WORKFLOWS/" class="md-nav__link">
         
   
   
@@ -732,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/backend/SUPABASE_INTEGRATION/" class="md-nav__link">
+      <a href="../SUPABASE_INTEGRATION/" class="md-nav__link">
         
   
   
@@ -801,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/frontend/PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
+      <a href="../../frontend/PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
         
   
   
@@ -824,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/frontend/QUALITY_ASSURANCE/" class="md-nav__link">
+      <a href="../../frontend/QUALITY_ASSURANCE/" class="md-nav__link">
         
   
   
@@ -847,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/frontend/STATE_MANAGEMENT/" class="md-nav__link">
+      <a href="../../frontend/STATE_MANAGEMENT/" class="md-nav__link">
         
   
   
@@ -870,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/frontend/TESTING_GUIDE/" class="md-nav__link">
+      <a href="../../frontend/TESTING_GUIDE/" class="md-nav__link">
         
   
   
@@ -893,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/frontend/UI_DOCUMENTATION/" class="md-nav__link">
+      <a href="../../frontend/UI_DOCUMENTATION/" class="md-nav__link">
         
   
   
@@ -962,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/ideas/Learnings/" class="md-nav__link">
+      <a href="../../ideas/Learnings/" class="md-nav__link">
         
   
   
@@ -985,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/ideas/MINDMAP_IDEAS/" class="md-nav__link">
+      <a href="../../ideas/MINDMAP_IDEAS/" class="md-nav__link">
         
   
   
@@ -1008,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
+      <a href="../../ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
         
   
   
@@ -1077,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/planning/VIDEO_STORY_OUTLINE/" class="md-nav__link">
+      <a href="../../planning/VIDEO_STORY_OUTLINE/" class="md-nav__link">
         
   
   
@@ -1146,7 +1282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
+      <a href="../../testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
         
   
   
@@ -1169,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
+      <a href="../../testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
         
   
   
@@ -1192,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
+      <a href="../../testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
         
   
   
@@ -1215,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/testing/TESTING_STRATEGY/" class="md-nav__link">
+      <a href="../../testing/TESTING_STRATEGY/" class="md-nav__link">
         
   
   
@@ -1284,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../insighthub/tools/AIDER_GUIDE/" class="md-nav__link">
+      <a href="../../tools/AIDER_GUIDE/" class="md-nav__link">
         
   
   
@@ -1360,7 +1496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../keskitetty_dokumentaatio/KUVAUS/" class="md-nav__link">
+      <a href="../../../keskitetty_dokumentaatio/KUVAUS/" class="md-nav__link">
         
   
   
@@ -1383,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../keskitetty_dokumentaatio/LEARNINGS/" class="md-nav__link">
+      <a href="../../../keskitetty_dokumentaatio/LEARNINGS/" class="md-nav__link">
         
   
   
@@ -1451,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../panualaluusua.github.io/TODO/" class="md-nav__link">
+      <a href="../../../panualaluusua.github.io/TODO/" class="md-nav__link">
         
   
   
@@ -1474,7 +1610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../panualaluusua.github.io/ideas/" class="md-nav__link">
+      <a href="../../../panualaluusua.github.io/ideas/" class="md-nav__link">
         
   
   
@@ -1497,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../panualaluusua.github.io/learnings/" class="md-nav__link">
+      <a href="../../../panualaluusua.github.io/learnings/" class="md-nav__link">
         
   
   
@@ -1520,7 +1656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../panualaluusua.github.io/project-overview/" class="md-nav__link">
+      <a href="../../../panualaluusua.github.io/project-overview/" class="md-nav__link">
         
   
   
@@ -1547,20 +1683,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1576,7 +1710,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Pyorailytapahtumat
@@ -1587,32 +1721,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Learnings from the Project
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/LEARNINGS/" class="md-nav__link">
         
   
   
@@ -1623,62 +1735,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-datan-ingestointi-eri-lahteista" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Datan ingestointi eri lähteistä
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-streamlit-ja-karttavisualisointi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Streamlit ja karttavisualisointi
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-datan-deduplikointi" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Datan deduplikointi
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mihin-laajempaan-kokonaisuuteen-nama-opit-liittyvat" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mihin laajempaan kokonaisuuteen nämä opit liittyvät?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1691,7 +1747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PROJECT_DESCRIPTION/" class="md-nav__link">
+      <a href="../../../pyorailytapahtumat/PROJECT_DESCRIPTION/" class="md-nav__link">
         
   
   
@@ -1759,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streamlit_e-sm/LEARNINGS/" class="md-nav__link">
+      <a href="../../../streamlit_e-sm/LEARNINGS/" class="md-nav__link">
         
   
   
@@ -1782,7 +1838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streamlit_e-sm/PROJECT_DESCRIPTION/" class="md-nav__link">
+      <a href="../../../streamlit_e-sm/PROJECT_DESCRIPTION/" class="md-nav__link">
         
   
   
@@ -1832,36 +1888,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-datan-ingestointi-eri-lahteista" class="md-nav__link">
+  <a href="#1-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Datan ingestointi eri lähteistä
+      1. Purpose
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-streamlit-ja-karttavisualisointi" class="md-nav__link">
+  <a href="#2-high-level-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Streamlit ja karttavisualisointi
+      2. High-Level Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-datan-deduplikointi" class="md-nav__link">
+  <a href="#3-setup-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Datan deduplikointi
+      3. Setup &amp; Configuration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mihin-laajempaan-kokonaisuuteen-nama-opit-liittyvat" class="md-nav__link">
+  <a href="#4-usage-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Mihin laajempaan kokonaisuuteen nämä opit liittyvät?
+      4. Usage Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-metrics-collected" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Metrics Collected
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-error-handling-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Error Handling &amp; Alerts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-intelligent-recommendation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Intelligent Recommendation Engine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-testing-summary-2025-07-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Testing Summary (2025-07-01)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Future Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Troubleshooting
     </span>
   </a>
   
@@ -1883,35 +1993,170 @@
 
 
 
-<h1 id="learnings-from-the-project">Learnings from the Project</h1>
-<p>Tähän tiedostoon on koottu keskeiset opit ja havainnot, joita projektin aikana kertyi.</p>
-<h2 id="1-datan-ingestointi-eri-lahteista">1. Datan ingestointi eri lähteistä</h2>
+<h1 id="langsmith-monitoring-dashboard">LangSmith Monitoring Dashboard</h1>
+<blockquote>
+<p>InsightHub – Backend Documentation<br />
+<strong>Status:</strong> Implemented ✅<br />
+<strong>Related Task:</strong> #38.4 – <em>Create LangSmith monitoring dashboard</em></p>
+</blockquote>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
+<p>LangSmith provides visual tracing, performance analytics and error-debugging for our <strong>LangGraph</strong>-based orchestrator.<br />
+This dashboard integrates LangSmith with our existing monitoring layer to give the team:</p>
 <ul>
-<li>Opin keräämään ja yhdistämään dataa useista eri lähteistä (esim. HTML, CSV, manuaaliset syötteet).</li>
-<li>Ingestoin ensimmäistä kertaa dataa suoraan HTML-sivuilta (esim. Bikeland.fi) ja opin käsittelemään HTML-rakenteita Pythonilla.</li>
-</ul>
-<h2 id="2-streamlit-ja-karttavisualisointi">2. Streamlit ja karttavisualisointi</h2>
-<ul>
-<li>Opin rakentamaan interaktiivisen karttavisualisoinnin Streamlitillä.</li>
-<li>Opin toteuttamaan dynaamisia filttereitä (esim. tapahtuman tyyppi, ajankohta, sijainti), jotka vaikuttavat kartan näkymään reaaliaikaisesti.</li>
-</ul>
-<h2 id="3-datan-deduplikointi">3. Datan deduplikointi</h2>
-<ul>
-<li>Opin erilaisia strategioita deduplikointiin, kun dataa tulee useista lähteistä ja tapahtumat voivat olla lähes identtisiä mutta pienin eroavaisuuksin (esim. nimissä pieniä kirjoitusasueroja).</li>
-<li>Opin vertailemaan ja yhdistämään tietueita fiksusti, jotta lopputuloksena on mahdollisimman kattava ja siisti tapahtumadata.</li>
+<li>Real-time execution metrics (duration, success/failure, token &amp; cost)</li>
+<li>Error classification, trend analysis &amp; alerting hooks</li>
+<li>Visual route analysis of ContentFetcher → Summarizer → Embedding → Storage pipeline</li>
+<li>AI-powered recommendations to surface bottlenecks &amp; optimisation tips</li>
+<li>Hybrid <strong>local ⇆ cloud</strong> fallback so development works even while API write-permissions propagate</li>
 </ul>
 <hr />
-<h2 id="mihin-laajempaan-kokonaisuuteen-nama-opit-liittyvat">Mihin laajempaan kokonaisuuteen nämä opit liittyvät?</h2>
-<p>Tässä projektissa ja sen oppimisessa kehittyneet taidot liittyvät seuraaviin laajempiin osa-alueisiin:</p>
+<h2 id="2-high-level-architecture">2. High-Level Architecture</h2>
+<p><div class="highlight"><pre><span></span><code>flowchart TD
+    subgraph Orchestrator
+        CF(ContentFetcher) --&gt; SUM(SummarizerNode)
+        SUM --&gt; EMB(EmbeddingNode)
+        EMB --&gt; STO(StorageNode)
+    end
+
+    CF &amp; SUM &amp; EMB &amp; STO -- &quot;@traceable decorators&quot; --&gt; LS[LangSmith SDK]
+    LS --&gt;|Traces| LangSmithCloud[(LangSmith Cloud)]
+    LS --&gt;|Local JSON traces| LocalStore[(./traces/*.json)]
+
+    LangSmithCloud &amp; LocalStore --&gt; Dash[LangSmithDashboard]
+    Dash --&gt; Dev(Developer / WebDashboard)
+</code></pre></div>
+* <strong><code>src/orchestrator/monitoring/langsmith_dashboard.py</code></strong> implements <code>LangSmithDashboard</code> class.<br />
+<em> Accepts either </em><em>local JSON</em><em> traces </em><em>or</em><em> live LangSmith API results.<br />
+</em> Merges/analyses data → returns rich dict or pretty CLI output.</p>
+<hr />
+<h2 id="3-setup-configuration">3. Setup &amp; Configuration</h2>
+<ol>
+<li><strong>Install dependency</strong> (already in <em>pyproject.toml</em>):
+   <div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>add<span class="w"> </span>langsmith
+</code></pre></div></li>
+<li><strong>Environment variables</strong> (add to <em>.env</em>):
+   <div class="highlight"><pre><span></span><code><span class="nv">LANGSMITH_API_KEY</span><span class="o">=</span>lsv2_pt_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+<span class="nv">LANGSMITH_PROJECT</span><span class="o">=</span>InsightHub
+<span class="c1"># Optional: toggle tracing locally only</span>
+<span class="nv">LANGSMITH_TRACING</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div></li>
+<li><strong>Permissions delay:</strong> new API keys need up to <strong>72 h</strong> for full write rights.<br />
+   The dashboard auto-detects 403 responses and stores traces locally until rights activate.</li>
+</ol>
+<hr />
+<h2 id="4-usage-examples">4. Usage Examples</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.monitoring.langsmith_dashboard</span><span class="w"> </span><span class="kn">import</span> <span class="n">LangSmithDashboard</span>
+
+<span class="c1"># 1. Collect a snapshot report (auto-detects local/cloud)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">LangSmithDashboard</span><span class="p">()</span><span class="o">.</span><span class="n">generate_report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="c1"># 2. Export detailed JSON for Web UI</span>
+<span class="n">LangSmithDashboard</span><span class="p">()</span><span class="o">.</span><span class="n">write_report</span><span class="p">(</span><span class="s2">&quot;./reports/langsmith_report.json&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Sample CLI output:
+<div class="highlight"><pre><span></span><code>🎯 LangSmith API: ✅ Connected
+📊 Total Workflows Analysed: 6
+✅ Success Rate: 100.0 %
+🚨 Bottlenecks Detected: 0
+💡 Recommendations: None – system optimal
+</code></pre></div></p>
+<hr />
+<h2 id="5-metrics-collected">5. Metrics Collected</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Execution time per node, end-to-end latency, throughput</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>Success / failure counts, retry attempts, error classes</td>
+</tr>
+<tr>
+<td><strong>Resources</strong></td>
+<td>Token usage, cost estimation (OpenAI, etc.), memory foot-print</td>
+</tr>
+<tr>
+<td><strong>Traces</strong></td>
+<td>Input/Output payload snippets, metadata per node</td>
+</tr>
+<tr>
+<td><strong>Insights</strong></td>
+<td>Bottleneck ranking, optimisation suggestions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-error-handling-alerts">6. Error Handling &amp; Alerts</h2>
 <ul>
-<li><strong>Data Engineering &amp; Data Pipeline -osaaminen:</strong> Datan keruu, yhdistäminen ja prosessointi eri lähteistä sekä deduplikointi ja harmonisointi.</li>
-<li><strong>Paikkatietojärjestelmät (GIS) ja geoinformatiikka:</strong> Sijaintitiedon käsittely, geokoodaus ja karttavisualisointi sekä niiden hyödyntäminen käytännön sovelluksissa.</li>
-<li><strong>Full Stack -sovelluskehitys ja prototyyppien rakentaminen:</strong> Nopeat MVP:t, käyttöliittymän ja datan yhdistäminen sekä automaattinen tiedon päivitys.</li>
-<li><strong>Ohjelmistokehityksen parhaat käytännöt:</strong> Modulaarinen koodi, virheenkäsittely, tiedostojen hallinta, käyttäjäystävällisyys sekä dokumentointi.</li>
-<li><strong>Automaatio ja tiedon avoimuus (Open Data):</strong> Automatisoidut datan päivitysprosessit ja tiedon avoimuuden tukeminen.</li>
+<li>All exceptions inside dashboard are logged via <code>orchestrator.monitoring.error_handler</code>.</li>
+<li>403 (Forbidden) during trace upload triggers <strong>local-only fallback</strong>; a warning is surfaced.</li>
+<li>TODO: integrate with <strong>Slack webhook</strong> once #13 Notification System task is complete.</li>
 </ul>
-<p>Nämä osa-alueet ovat hyödyllisiä mm. data-analytiikassa, ohjelmistokehityksessä, kaupunkisuunnittelussa, tapahtumatuotannossa ja tutkimuksessa.</p>
-<p>Voit täydentää tätä tiedostoa lisäämällä muita oppeja tai huomioita projektin edetessä.</p>
+<hr />
+<h2 id="7-intelligent-recommendation-engine">7. Intelligent Recommendation Engine</h2>
+<p><code>_generate_recommendations()</code> analyses:
+1. 95-percentile latency vs threshold
+2. Token-cost spikes compared to 7-day average
+3. Frequent identical error messages → suggest caching / back-off</p>
+<p>Recommendations are sorted by <strong>impact × confidence</strong> and returned as structured data for UI display.</p>
+<hr />
+<h2 id="8-testing-summary-2025-07-01">8. Testing Summary (2025-07-01)</h2>
+<ul>
+<li>6 trace runs analysed – <strong>no failures</strong></li>
+<li>Dashboard JSON payload size: <strong>2 723 B</strong></li>
+<li>End-to-end report generation &lt; <strong>150 ms</strong> on M2 laptop</li>
+</ul>
+<p>Unit tests in <strong><code>test_langsmith_dashboard.py</code></strong> cover:
+* Local vs cloud mode switching
+* Metric aggregation accuracy
+* Recommendation engine logic</p>
+<hr />
+<h2 id="9-future-enhancements">9. Future Enhancements</h2>
+<ul>
+<li>WebDashboard UI in <strong>SvelteKit</strong> (planned – task 38.5)</li>
+<li>Real-time websocket stream for live workflow view</li>
+<li>Historical trend storage in Supabase for long-term analytics</li>
+<li>Integration with <strong>A/B testing framework</strong> (task 5)</li>
+</ul>
+<hr />
+<h2 id="10-troubleshooting">10. Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>403 Forbidden</code> when uploading traces</td>
+<td>API key write-permissions not yet active</td>
+<td>Wait up to 72 h; dashboard stores traces locally</td>
+</tr>
+<tr>
+<td>Dashboard shows 0 workflows</td>
+<td>Tracing disabled</td>
+<td>Ensure <code>LANGSMITH_TRACING=true</code> or decorators applied</td>
+</tr>
+<tr>
+<td>Recommendations always empty</td>
+<td>Insufficient data volume</td>
+<td>Gather at least 20 traces for meaningful analysis</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Document generated automatically via workflow update – 2025-07-02.</em> </p>
 
 
 
@@ -1960,10 +2205,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
