@@ -1,0 +1,3031 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/planning/K%C3%84YTT%C3%84J%C3%84PROFIILI_JA_PALAUTEMEKANISMIN_TOTEUTUS/">
+      
+      
+        <link rel="prev" href="../CONTENT_ORCHESTRATOR_PRD/">
+      
+      
+        <link rel="next" href="../MULTI_SIGNAL_RANKING_ARCHITECTURE/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 & #12) - Keskitetty dokumentaatio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kayttajaprofiili-ja-palautemekanismin-toteutus-tehtavat-6-12" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-header__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Keskitetty dokumentaatio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 &amp; #12)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-nav__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Keskitetty dokumentaatio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Insighthub
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Insighthub
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONFIG_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Configuration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEVELOPER_HANDBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Developer Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GETTING_STARTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with InsightHub Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSIGHTHUB_STRATEGIC_POSITIONING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    INSIGHTHUB STRATEGIC POSITIONING
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PROJECT_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub - Projektin Konteksti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VISION
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_1" id="__nav_1_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audits
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Code Quality Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/COST_AUDIT_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Cost Audit Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/PERFORMANCE_AUDIT_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Performance Audit Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/SECURITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Security Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audits
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Audits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/PERFORMANCE_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/SECURITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SECURITY CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/AI_PIPELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Integration Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_MONITORING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Monitoring Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_OPERATIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Operational Procedures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_TRAINING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Training Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_WORKFLOWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Workflow Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/SUPABASE_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/SUPABASE_PGVECTOR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase pgvector Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Performance &amp; Visual Regression Testing Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/QUALITY_ASSURANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎯 Frontend Quality Assurance Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/STATE_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend State Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/TESTING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/UI_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📚 UI Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_13" id="__nav_1_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_13">
+            <span class="md-nav__icon md-icon"></span>
+            Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTENT_ORCHESTRATOR_PRD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document: Content Orchestrator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 &amp; #12)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 &amp; #12)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#strateginen-konteksti-ja-tavoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strateginen Konteksti ja Tavoitteet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sisallysluettelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sisällysluettelo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-i-keskusteleva-perehdytys-ja-alkuprofiilin-luonti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-arkkitehtoninen-lahestymistapa-langchain-expression-language-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Arkkitehtoninen Lähestymistapa: LangChain Expression Language (LCEL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-vaihe-1-kiinnostuksen-kohteiden-ekstrahointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Vaihe 1: Kiinnostuksen Kohteiden Ekstrahointi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vaihe-2-tarkentavien-kysymysten-generointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Vaihe 2: Tarkentavien Kysymysten Generointi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-dialogin-konsolidointi-ja-vektorointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Dialogin Konsolidointi ja Vektorointi
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-ii-matemaattinen-malli-profiilin-kehittymiselle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa II: Matemaattinen Malli Profiilin Kehittymiselle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa II: Matemaattinen Malli Profiilin Kehittymiselle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vektorin-ydinpaivityskaava" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Vektorin Ydinpäivityskaava
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-painoarvojen-w-maarittely" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Painoarvojen (w) Määrittely
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-koodiesimerkki-vektoripaivitys" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Koodiesimerkki: Vektoripäivitys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-iii-systematisoitu-palautesilmukan-toteutus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa III: Systematisoitu Palautesilmukan Toteutus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa III: Systematisoitu Palautesilmukan Toteutus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-uiux-suunnittelu-rakeiselle-palautteelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 UI/UX-suunnittelu Rakeiselle Palautteelle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-api-suunnittelu-palautteen-valittamiseen" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 API-suunnittelu Palautteen Välittämiseen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-taustajarjestelman-toteutus-asynkroninen-kasittely" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Taustajärjestelmän Toteutus: Asynkroninen Käsittely
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-kehittyneet-palautekasittelijat" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Kehittyneet Palautekäsittelijät
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MULTI_SIGNAL_RANKING_ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_REQUIREMENTS_DOCUMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document: LLM-Powered Content Scoring and Summarization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_STORY_OUTLINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub-videon käsikirjoitus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_13_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_13_6" id="__nav_1_13_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_13_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_13_6">
+            <span class="md-nav__icon md-icon"></span>
+            Ideas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/Learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from InsightHub Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/MINDMAP_IDEAS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mind Map Application Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Brainstorm: Building an n8n Workflow Copilot with a RAG System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reports
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/ARCHITECTURE_STRATEGY_SYNC_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raportti: Arkkitehtuurin ja Strategian Synkronointi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-080423/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 080423
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-144157/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 144157
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-144250/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 144250
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-152236/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 152236
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PERFORMANCE_AUDIT_REPORT_20250703-080706/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE AUDIT REPORT 20250703 080706
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PERFORMANCE_AUDIT_REPORT_20250703-152410/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE AUDIT REPORT 20250703 152410
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/SECURITY_AUDIT_REPORT_20250703-152345/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SECURITY AUDIT REPORT 20250703 152345
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/TASK_46_PROGRESS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtävä #46: End-to-End Datamallien Yhtenäistäminen - Edistymisraportti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_15" id="__nav_1_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🤖 AI Testing Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright MCP Integration with Vision Capabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/TESTING_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_16" id="__nav_1_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_16">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/AIDER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIDER GUIDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keskitetty dokumentaatio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Keskitetty dokumentaatio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/KUVAUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projektin kuvaus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mitä opin projektin aikana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Panualaluusua.github.io
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Panualaluusua.github.io
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtävälista Portfolion Viimeistelyyn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from Building My Portfolio Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/project-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Overview: panualaluusua.github.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pyorailytapahtumat
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Pyorailytapahtumat
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: Pyöräilytapahtumat Suomessa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Streamlit e sm
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Streamlit e sm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the E-pyöräilyn SM-kisat Results Service Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: E-pyöräilyn SM-kisojen Tulospalvelu Frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#strateginen-konteksti-ja-tavoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strateginen Konteksti ja Tavoitteet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sisallysluettelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sisällysluettelo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-i-keskusteleva-perehdytys-ja-alkuprofiilin-luonti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-arkkitehtoninen-lahestymistapa-langchain-expression-language-lcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Arkkitehtoninen Lähestymistapa: LangChain Expression Language (LCEL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-vaihe-1-kiinnostuksen-kohteiden-ekstrahointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Vaihe 1: Kiinnostuksen Kohteiden Ekstrahointi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vaihe-2-tarkentavien-kysymysten-generointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Vaihe 2: Tarkentavien Kysymysten Generointi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-dialogin-konsolidointi-ja-vektorointi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Dialogin Konsolidointi ja Vektorointi
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-ii-matemaattinen-malli-profiilin-kehittymiselle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa II: Matemaattinen Malli Profiilin Kehittymiselle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa II: Matemaattinen Malli Profiilin Kehittymiselle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vektorin-ydinpaivityskaava" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Vektorin Ydinpäivityskaava
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-painoarvojen-w-maarittely" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Painoarvojen (w) Määrittely
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-koodiesimerkki-vektoripaivitys" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Koodiesimerkki: Vektoripäivitys
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osa-iii-systematisoitu-palautesilmukan-toteutus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Osa III: Systematisoitu Palautesilmukan Toteutus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Osa III: Systematisoitu Palautesilmukan Toteutus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-uiux-suunnittelu-rakeiselle-palautteelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 UI/UX-suunnittelu Rakeiselle Palautteelle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-api-suunnittelu-palautteen-valittamiseen" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 API-suunnittelu Palautteen Välittämiseen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-taustajarjestelman-toteutus-asynkroninen-kasittely" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Taustajärjestelmän Toteutus: Asynkroninen Käsittely
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-kehittyneet-palautekasittelijat" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Kehittyneet Palautekäsittelijät
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="kayttajaprofiili-ja-palautemekanismin-toteutus-tehtavat-6-12">Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 &amp; #12)</h1>
+<h2 id="strateginen-konteksti-ja-tavoitteet">Strateginen Konteksti ja Tavoitteet</h2>
+<p>Tämä dokumentti on tekninen toteutussuunnitelma yhdelle InsightHubin keskeisimmistä kilpailueduista: <strong>syvälle personoinnille</strong>. Se vastaa suoraan <code>INSIGHTHUB_STRATEGIC_POSITIONING.md</code>-dokumentissa määriteltyihin tavoitteisiin, erityisesti <strong>Pilari 2: Syvä Personointi</strong> ja <strong>Aloite 2: Systematisoi Semanttisen Relevanssin Palaute</strong>.</p>
+<p>Tässä kuvatut mekanismit – dynaaminen <code>interest_vector</code> ja rakeinen palautejärjestelmä – ovat välttämättömiä <code>ContentScorer</code>-solmulle, joka on määritelty <code>ARCHITECTURE.md</code>-dokumentissa. Ne muodostavat oppivan järjestelmän, joka mahdollistaa poikkeuksellisen relevanssin ja toteuttaa projektin ydinlupauksen "henkilökohtaisena tekoälyanalyytikkona".</p>
+<p>Tämä suunnitelma kattaa <strong>Tehtävät #6 (Käyttäjäprofiilit)</strong> ja <strong>#12 (Oppiminen palautteesta)</strong>.</p>
+<h2 id="sisallysluettelo">Sisällysluettelo</h2>
+<ul>
+<li><a href="#strateginen-konteksti-ja-tavoitteet">Strateginen Konteksti ja Tavoitteet</a></li>
+<li><a href="#osa-i-keskusteleva-perehdytys-ja-alkuprofiilin-luonti">Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti</a></li>
+<li><a href="#osa-ii-matemaattinen-malli-profiilin-kehittymiselle">Osa II: Matemaattinen Malli Profiilin Kehittymiselle</a></li>
+<li><a href="#osa-iii-systematisoitu-palautesilmukan-toteutus">Osa III: Systematisoitu Palautesilmukan Toteutus</a></li>
+</ul>
+<hr />
+<h2 id="osa-i-keskusteleva-perehdytys-ja-alkuprofiilin-luonti">Osa I: Keskusteleva Perehdytys ja Alkuprofiilin Luonti</h2>
+<p>Tässä osassa kuvataan yksityiskohtaisesti kielimallipohjaisen (LLM) perehdytysketjun suunnittelu ja toteutus. Arkkitehtuuriseksi valinnaksi on tehty LangChain Expression Language (LCEL), joka on moderni ja deklaratiivinen viitekehys tekoälylogiikan koostamiseen.</p>
+<h3 id="11-arkkitehtoninen-lahestymistapa-langchain-expression-language-lcel">1.1 Arkkitehtoninen Lähestymistapa: LangChain Expression Language (LCEL)</h3>
+<p>Järjestelmän toteutuksessa hyödynnetään yksinomaan LangChain Expression Language (LCEL) -kieltä. Tämä valinta perustuu LCEL:n tarjoamiin merkittäviin etuihin:
+- <strong>Seurattavuus (Observability):</strong> Saumaton LangSmith-jäljitys.
+- <strong>Suorituskyky:</strong> Optimoitu rinnakkaisen ja asynkronisen prosessoinnin avulla.
+- <strong>Intuitiivinen Syntaksi:</strong> Koostettava logiikka putkioperaattorilla (<code>|</code>).</p>
+<p>Perehdytysprosessi on yhtenäinen LCEL-ketju, joka koostuu kahdesta päävaiheesta:
+1.  <strong>Alustava Kiinnostuksen Kohteiden Ekstrahointi:</strong> Jäsentää käyttäjän vapaamuotoisen esittelytekstin.
+2.  <strong>Dialogipohjainen Tarkennus:</strong> Luo tarkentavia kysymyksiä syventääkseen profiilia.</p>
+<h3 id="12-vaihe-1-kiinnostuksen-kohteiden-ekstrahointi">1.2 Vaihe 1: Kiinnostuksen Kohteiden Ekstrahointi</h3>
+<p>Ensimmäinen ketju jäsentää käyttäjän syötteen ja muuntaa sen strukturoituun <code>UserInterests</code>-muotoon Pydantic-skeeman avulla.</p>
+<p><strong>Koodiesimerkki: Ekstraktioketju</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.pydantic_v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="c1"># 1. Pydantic-skeeman määrittely strukturoidulle datalle</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserInterests</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strukturoitu data, joka kuvaa käyttäjän kiinnostuksen kohteita.&quot;&quot;&quot;</span>
+    <span class="n">topics</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Lista keskeisistä aiheista tai konsepteista, jotka käyttäjä mainitsi.&quot;</span><span class="p">)</span>
+    <span class="n">entities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Lista nimetyistä entiteeteistä, kuten yrityksistä, teknologioista tai henkilöistä.&quot;</span><span class="p">)</span>
+    <span class="n">overall_summary</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Yhden lauseen tiivistelmä käyttäjän pääasiallisista kiinnostuksen kohteista.&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Kielimallin alustus</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 3. Ekstraktioketjun luonti LCEL:llä</span>
+<span class="n">structured_llm</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">with_structured_output</span><span class="p">(</span><span class="n">UserInterests</span><span class="p">)</span>
+
+<span class="c1"># 4. Prompt-mallin määrittely</span>
+<span class="n">extraction_prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;Olet asiantuntija, joka osaa poimia strukturoitua tietoa tekstistä. Käyttäjä kuvailee kiinnostuksen kohteitaan. Parsi tekstistä avainaiheet, entiteetit ja luo lyhyt yhteenveto.&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{user_text}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Koko ketju: prompt -&gt; strukturoitu LLM</span>
+<span class="n">extraction_chain</span> <span class="o">=</span> <span class="n">extraction_prompt</span> <span class="o">|</span> <span class="n">structured_llm</span>
+
+<span class="c1"># Esimerkkisuoritus</span>
+<span class="n">user_description</span> <span class="o">=</span> <span class="s2">&quot;Olen todella kiinnostunut tekoälyn soveltamisesta rahoitusalalla, erityisesti algoritmisesta kaupankäynnistä ja riskienhallinnasta. Seuraan aktiivisesti Nvidian ja Googlen kehitystä tällä saralla. Myös syväoppimisen teoreettiset perusteet kiehtovat minua.&quot;</span>
+<span class="n">extracted_data</span> <span class="o">=</span> <span class="n">extraction_chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">&quot;user_text&quot;</span><span class="p">:</span> <span class="n">user_description</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ekstraktoitu data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extracted_data</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="13-vaihe-2-tarkentavien-kysymysten-generointi">1.3 Vaihe 2: Tarkentavien Kysymysten Generointi</h3>
+<p>Toinen LCEL-ketju ottaa <code>UserInterests</code>-objektin syötteekseen ja generoi 2-3 avointa kysymystä, jotka syventävät ymmärrystä käyttäjän profiilista. <code>MessagesPlaceholder</code> mahdollistaa monivuoroisen keskustelun.</p>
+<p><strong>Koodiesimerkki: Kysymysten Generointiketju</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">HumanMessage</span><span class="p">,</span> <span class="n">AIMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessagesPlaceholder</span>
+
+<span class="c1"># Prompt-malli kysymysten generointiin</span>
+<span class="n">question_generation_prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_messages</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;Olet asiantuntijahaastattelija. Tehtäväsi on syventää ymmärrystä käyttäjän kiinnostuksen kohteista. Perustuen annettuun yhteenvetoon, aiheisiin ja entiteetteihin, esitä 2-3 oivaltavaa, avointa kysymystä. Älä toista annettuja tietoja, vaan kysy tarkennuksia tai esimerkkejä.&quot;</span><span class="p">),</span>
+    <span class="n">MessagesPlaceholder</span><span class="p">(</span><span class="n">variable_name</span><span class="o">=</span><span class="s2">&quot;chat_history&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;Annetut tiedot:</span>
+<span class="n">Aiheet</span><span class="p">:</span> <span class="p">{</span><span class="n">topics</span><span class="p">}</span>
+<span class="n">Entiteetit</span><span class="p">:</span> <span class="p">{</span><span class="n">entities</span><span class="p">}</span>
+<span class="n">Tiivistelmä</span><span class="p">:</span> <span class="p">{</span><span class="n">summary</span><span class="p">}</span>
+
+<span class="p">{</span><span class="n">user_input</span><span class="p">}</span><span class="s2">&quot;)</span>
+<span class="p">])</span>
+
+<span class="c1"># Kysymysten generointiketju</span>
+<span class="n">question_generation_chain</span> <span class="o">=</span> <span class="n">question_generation_prompt</span> <span class="o">|</span> <span class="n">llm</span>
+
+<span class="c1"># Ensimmäinen kysymyskierros</span>
+<span class="n">initial_questions_response</span> <span class="o">=</span> <span class="n">question_generation_chain</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+    <span class="s2">&quot;topics&quot;</span><span class="p">:</span> <span class="n">extracted_data</span><span class="o">.</span><span class="n">topics</span><span class="p">,</span>
+    <span class="s2">&quot;entities&quot;</span><span class="p">:</span> <span class="n">extracted_data</span><span class="o">.</span><span class="n">entities</span><span class="p">,</span>
+    <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="n">extracted_data</span><span class="o">.</span><span class="n">overall_summary</span><span class="p">,</span>
+    <span class="s2">&quot;chat_history&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;user_input&quot;</span><span class="p">:</span> <span class="s2">&quot;Generoi ensimmäiset kysymykset tämän perusteella.&quot;</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generoidut tarkentavat kysymykset:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initial_questions_response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="14-dialogin-konsolidointi-ja-vektorointi">1.4 Dialogin Konsolidointi ja Vektorointi</h3>
+<p>Lopuksi koko keskustelu (alkuperäinen teksti + dialogi) yhdistetään yhdeksi dokumentiksi. Tämä dokumentti syötetään upotusmallille (esim. Sentence-Transformers) luoden <code>interest_vector</code>. Vektori tallennetaan Supabasen <code>profiles</code>-tauluun ja liitetään käyttäjän <code>user_id</code>:hen.</p>
+<hr />
+<h2 id="osa-ii-matemaattinen-malli-profiilin-kehittymiselle">Osa II: Matemaattinen Malli Profiilin Kehittymiselle</h2>
+<p>Tämä osa esittää matemaattisen perustan <code>interest_vector</code>-vektorin inkrementaaliselle päivittämiselle käyttäjän vuorovaikutusten perusteella.</p>
+<h3 id="21-vektorin-ydinpaivityskaava">2.1 Vektorin Ydinpäivityskaava</h3>
+<p>Päivitys tapahtuu seuraavalla kaavalla:</p>
+<p>$$ \vec{v}<em _text_old="\text{old">{\text{new}} = \text{normalize}(\vec{v}</em>)) $$}} + (w \cdot \vec{v}_{\text{content}</p>
+<ul>
+<li><strong>$\vec{v}_{\text{old}}$</strong>: Käyttäjän nykyinen <code>interest_vector</code>.</li>
+<li><strong>$\vec{v}_{\text{content}}$</strong>: Vuorovaikutuksen kohteena olleen sisällön upotusvektori.</li>
+<li><strong>$w$</strong>: Skalaaripaino, joka määrittää palautteen suunnan ja voimakkuuden.</li>
+</ul>
+<h3 id="22-painoarvojen-w-maarittely">2.2 Painoarvojen (<code>w</code>) Määrittely</h3>
+<p>Painoarvo <code>w</code> on dynaaminen ja riippuu palautteen tyypistä:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Palautetyyppi</th>
+<th style="text-align: left;"><code>w</code> (Painoarvo)</th>
+<th style="text-align: left;">Kuvaus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tykkäys / Positiivinen</strong></td>
+<td style="text-align: left;"><code>+0.10</code></td>
+<td style="text-align: left;">Vahvistaa kiinnostusta.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Piilotus / Negatiivinen</strong></td>
+<td style="text-align: left;"><code>-0.15</code></td>
+<td style="text-align: left;">Vähentää relevanssia voimakkaammin.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rakeinen (esim. "liian pinnallinen")</strong></td>
+<td style="text-align: left;"><code>-0.05</code> - <code>+0.05</code></td>
+<td style="text-align: left;">Hienovaraisempi, suunnattu päivitys.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-koodiesimerkki-vektoripaivitys">2.3 Koodiesimerkki: Vektoripäivitys</h3>
+<p>Funktio päivittää ja normalisoi käyttäjän profiilivektorin.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_and_normalize_vector</span><span class="p">(</span>
+    <span class="n">old_vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">content_vector</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Päivittää käyttäjän kiinnostusvektorin, käsittelee nollavektorin ja normalisoi tuloksen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">old_vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">weight</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">content_vector</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">new_vector</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">new_vector</span>
+    <span class="k">return</span> <span class="n">new_vector</span> <span class="o">/</span> <span class="n">norm</span>
+
+<span class="c1"># Esimerkkikäyttö</span>
+<span class="n">user_profile_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">user_profile_vector</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">user_profile_vector</span><span class="p">)</span>
+
+<span class="n">content_vector_liked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">content_vector_liked</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">content_vector_liked</span><span class="p">)</span>
+
+<span class="c1"># Käyttäjä tykkää sisällöstä (positiivinen päivitys)</span>
+<span class="n">updated_vector</span> <span class="o">=</span> <span class="n">update_and_normalize_vector</span><span class="p">(</span><span class="n">user_profile_vector</span><span class="p">,</span> <span class="n">content_vector_liked</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Päivitetty vektori (tykkäys):&quot;</span><span class="p">,</span> <span class="n">updated_vector</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="osa-iii-systematisoitu-palautesilmukan-toteutus">Osa III: Systematisoitu Palautesilmukan Toteutus</h2>
+<p>Tämä osa esittelee full-stack-suunnitelman rakeiselle palautejärjestelmälle.</p>
+<h3 id="31-uiux-suunnittelu-rakeiselle-palautteelle">3.1 UI/UX-suunnittelu Rakeiselle Palautteelle</h3>
+<p>"Piilota"-toiminnon jälkeen käyttäjälle esitetään yhdellä klikkauksella toimivia vaihtoehtoja, jotka keräävät syyn hylkäämiselle:
+- <strong>"Ei relevantti"</strong>: Aihe on täysin epäkiinnostava.
+- <strong>"Kiinnostava, mutta ei nyt"</strong>: Aihe on relevantti, mutta ajankohta väärä.
+- <strong>"Liian pinnallinen / perusteet"</strong>: Aihe oikea, syvyystaso väärä.
+- <strong>"Liian edistynyt / niche"</strong>: Edellisen vastakohta.</p>
+<h3 id="32-api-suunnittelu-palautteen-valittamiseen">3.2 API-suunnittelu Palautteen Välittämiseen</h3>
+<p>Palaute lähetetään standardoidulla RESTful API -rajapinnalla.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ominaisuus</th>
+<th style="text-align: left;">Määrittely</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>HTTP-metodi</strong></td>
+<td style="text-align: left;"><code>POST</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rajapintapiste</strong></td>
+<td style="text-align: left;"><code>/api/v1/feedback</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kuvaus</strong></td>
+<td style="text-align: left;">Lähettää luokitellun käyttäjäpalautteen tietystä sisällöstä.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pyynnön runko</strong></td>
+<td style="text-align: left;"><code>{ "content_id": "uuid", "user_id": "uuid", "feedback_type": "enum" }</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>feedback_type</code> Enum</strong></td>
+<td style="text-align: left;"><code>NOT_RELEVANT</code>, <code>NOT_NOW</code>, <code>TOO_SUPERFICIAL</code>, <code>TOO_ADVANCED</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Onnistunut vastaus</strong></td>
+<td style="text-align: left;"><code>202 Accepted</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Virhevastaus</strong></td>
+<td style="text-align: left;"><code>400 Bad Request</code>, <code>404 Not Found</code>, <code>422 Unprocessable Entity</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-taustajarjestelman-toteutus-asynkroninen-kasittely">3.3 Taustajärjestelmän Toteutus: Asynkroninen Käsittely</h3>
+<p>Jotta vältetään API-vastausajan hidastuminen, palautetapahtumat käsitellään asynkronisesti viestijonon (esim. RabbitMQ, Redis Pub/Sub) kautta.
+1.  <strong>API-vastaanotto:</strong> <code>/api/v1/feedback</code> vastaanottaa pyynnön, validoi sen ja lähettää sen välittömästi viestijonoon.
+2.  <strong>Worker-palvelu:</strong> Taustalla toimiva worker-palvelu kuuntelee jonoa, poimii tapahtumia ja suorittaa raskaan laskennan (vektoripäivitykset).</p>
+<h3 id="34-kehittyneet-palautekasittelijat">3.4 Kehittyneet Palautekäsittelijät</h3>
+<p>Eri palautetyypit käynnistävät erilaisia vektoripäivitysstrategioita, jotka hyödyntävät vektoriprojektiota.</p>
+<ul>
+<li><strong><code>TOO_SUPERFICIAL</code></strong>: Vähentää käyttäjän profiilista sisällön yleistä, prototyyppistä osaa.</li>
+<li><strong><code>TOO_ADVANCED</code></strong>: Vähentää käyttäjän profiilista sisällön spesifistä, syvällistä osaa.</li>
+</ul>
+<p><strong>Koodiesimerkki: Palautetapahtuman Käsittely</strong>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">project_vector</span><span class="p">(</span><span class="n">v_to_project</span><span class="p">,</span> <span class="n">v_target</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Laskee vektorin v_to_project projektion vektorille v_target.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_to_project</span><span class="p">,</span> <span class="n">v_target</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_target</span><span class="p">,</span> <span class="n">v_target</span><span class="p">)</span> <span class="o">*</span> <span class="n">v_target</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_topic_prototype_vector</span><span class="p">(</span><span class="n">content_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hakee tai laskee aiheen yleisen prototyyppivektorin (placeholder).&quot;&quot;&quot;</span>
+    <span class="n">prototype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">prototype</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">prototype</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process_feedback_event</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Käsittelee viestijonosta tulevan palautetapahtuman.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">feedback_type</span> <span class="o">=</span> <span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;feedback_type&quot;</span><span class="p">]</span>
+    <span class="n">user_vec</span> <span class="o">=</span> <span class="n">get_user_vector_from_db</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">])</span>
+    <span class="n">content_vec</span> <span class="o">=</span> <span class="n">get_content_vector_from_db</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;content_id&quot;</span><span class="p">])</span>
+
+    <span class="n">W_STRONG</span> <span class="o">=</span> <span class="mf">0.15</span>
+    <span class="n">W_NUANCED</span> <span class="o">=</span> <span class="mf">0.08</span>
+    <span class="n">new_user_vec</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">feedback_type</span> <span class="o">==</span> <span class="s2">&quot;NOT_RELEVANT&quot;</span><span class="p">:</span>
+        <span class="n">new_user_vec</span> <span class="o">=</span> <span class="n">update_and_normalize_vector</span><span class="p">(</span><span class="n">user_vec</span><span class="p">,</span> <span class="n">content_vec</span><span class="p">,</span> <span class="o">-</span><span class="n">W_STRONG</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">feedback_type</span> <span class="o">==</span> <span class="s2">&quot;TOO_SUPERFICIAL&quot;</span><span class="p">:</span>
+        <span class="n">topic_prototype_vec</span> <span class="o">=</span> <span class="n">get_topic_prototype_vector</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;content_id&quot;</span><span class="p">])</span>
+        <span class="n">general_component</span> <span class="o">=</span> <span class="n">project_vector</span><span class="p">(</span><span class="n">content_vec</span><span class="p">,</span> <span class="n">topic_prototype_vec</span><span class="p">)</span>
+        <span class="n">new_user_vec</span> <span class="o">=</span> <span class="n">update_and_normalize_vector</span><span class="p">(</span><span class="n">user_vec</span><span class="p">,</span> <span class="n">general_component</span><span class="p">,</span> <span class="o">-</span><span class="n">W_NUANCED</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">feedback_type</span> <span class="o">==</span> <span class="s2">&quot;TOO_ADVANCED&quot;</span><span class="p">:</span>
+        <span class="n">topic_prototype_vec</span> <span class="o">=</span> <span class="n">get_topic_prototype_vector</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;content_id&quot;</span><span class="p">])</span>
+        <span class="n">general_component</span> <span class="o">=</span> <span class="n">project_vector</span><span class="p">(</span><span class="n">content_vec</span><span class="p">,</span> <span class="n">topic_prototype_vec</span><span class="p">)</span>
+        <span class="n">specific_component</span> <span class="o">=</span> <span class="n">content_vec</span> <span class="o">-</span> <span class="n">general_component</span>
+        <span class="n">new_user_vec</span> <span class="o">=</span> <span class="n">update_and_normalize_vector</span><span class="p">(</span><span class="n">user_vec</span><span class="p">,</span> <span class="n">specific_component</span><span class="p">,</span> <span class="o">-</span><span class="n">W_NUANCED</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">new_user_vec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">save_user_vector_to_db</span><span class="p">(</span><span class="n">feedback_event</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">],</span> <span class="n">new_user_vec</span><span class="p">)</span>
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>

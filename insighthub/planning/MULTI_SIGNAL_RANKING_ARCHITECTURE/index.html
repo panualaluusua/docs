@@ -1,0 +1,3093 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Architectural plan for the multi-signal content ranking system. This document is in Finnish.">
+      
+      
+      
+        <link rel="canonical" href="https://panualaluusua.github.io/docs/insighthub/planning/MULTI_SIGNAL_RANKING_ARCHITECTURE/">
+      
+      
+        <link rel="prev" href="../K%C3%84YTT%C3%84J%C3%84PROFIILI_JA_PALAUTEMEKANISMIN_TOTEUTUS/">
+      
+      
+        <link rel="next" href="../PRODUCT_REQUIREMENTS_DOCUMENT/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma - Keskitetty dokumentaatio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#insighthub-monisignaalisen-sisaltorankkauksen-arkkitehtoninen-suunnitelma" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-header__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Keskitetty dokumentaatio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Keskitetty dokumentaatio" class="md-nav__button md-logo" aria-label="Keskitetty dokumentaatio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Keskitetty dokumentaatio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Insighthub
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Insighthub
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONFIG_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Configuration Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DEVELOPER_HANDBOOK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub Developer Handbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GETTING_STARTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started with InsightHub Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../INSIGHTHUB_STRATEGIC_POSITIONING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    INSIGHTHUB STRATEGIC POSITIONING
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PROJECT_CONTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub - Projektin Konteksti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VISION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VISION
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9_1" id="__nav_1_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audits
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Audits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Code Quality Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/COST_AUDIT_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Cost Audit Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/PERFORMANCE_AUDIT_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Performance Audit Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/audits/SECURITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actionable Security Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_10" id="__nav_1_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audits
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_10">
+            <span class="md-nav__icon md-icon"></span>
+            Audits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/CODE_QUALITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/PERFORMANCE_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../audits/SECURITY_CHECKLIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SECURITY CHECKLIST
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_11" id="__nav_1_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_11">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/AI_PIPELINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/API_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Integration Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_MONITORING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Monitoring Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_OPERATIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Operational Procedures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_TRAINING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Training Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/LANGSMITH_WORKFLOWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LangSmith Workflow Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/SUPABASE_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/SUPABASE_PGVECTOR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase pgvector Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_12" id="__nav_1_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/PERFORMANCE_VISUAL_TESTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Performance &amp; Visual Regression Testing Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/QUALITY_ASSURANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎯 Frontend Quality Assurance Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/STATE_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend State Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/TESTING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frontend Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/UI_DOCUMENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📚 UI Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_13" id="__nav_1_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_13">
+            <span class="md-nav__icon md-icon"></span>
+            Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTENT_ORCHESTRATOR_PRD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document: Content Orchestrator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../K%C3%84YTT%C3%84J%C3%84PROFIILI_JA_PALAUTEMEKANISMIN_TOTEUTUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Käyttäjäprofiili ja Palautemekanismin Toteutus (Tehtävät #6 &amp; #12)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#yhteenveto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Yhteenveto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nykytila-ja-haasteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Nykytila ja Haasteet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Nykytila ja Haasteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-semanttisen-haun-rajoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Semanttisen Haun Rajoitteet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lineaarisen-pisteytyksen-haasteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Lineaarisen Pisteytyksen Haasteet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-arkkitehtoninen-suositus-insighthubille" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Arkkitehtoninen Suositus InsightHubille
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ehdotettu-arkkitehtuuri-monivaiheinen-pisteytys" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Ehdotettu Arkkitehtuuri: Monivaiheinen Pisteytys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ehdotettu Arkkitehtuuri: Monivaiheinen Pisteytys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-signaali-1-tuoreuspisteet-s_freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Signaali 1: Tuoreuspisteet ($S_{freshness}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Signaali 1: Tuoreuspisteet ($S_{freshness}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esimerkki-python-toteutuksesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esimerkki Python-toteutuksesta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-signaali-2-laatupisteet-s_quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Signaali 2: Laatupisteet ($S_{quality}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Signaali 2: Laatupisteet ($S_{quality}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tietomalli-articlequality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tietomalli: ArticleQuality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laatupisteiden-laskenta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laatupisteiden laskenta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-signaali-3-kayttajavuorovaikutus-s_interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Signaali 3: Käyttäjävuorovaikutus ($S_{interaction}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Signaali 3: Käyttäjävuorovaikutus ($S_{interaction}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tietomalli-interactionsignal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tietomalli: InteractionSignal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-relevanssipisteiden-yhdistaminen-s_relevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Relevanssipisteiden Yhdistäminen ($S_{relevance}$)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integraatio-jarjestelmaan-ja-toteutus" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integraatio Järjestelmään ja Toteutus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Integraatio Järjestelmään ja Toteutus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sijoittuminen-arkkitehtuuriin-contentscorer-solmu" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Sijoittuminen Arkkitehtuuriin: ContentScorer-solmu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-konfiguraation-keskittaminen-best-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Konfiguraation Keskittäminen (Best Practice)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-tietomallien-valinen-suhde-articlequality-vs-contentrelevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Tietomallien välinen suhde: ArticleQuality vs. ContentRelevance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tietokantafunktion-esimerkki" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Tietokantafunktion Esimerkki
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seuraavat-askeleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seuraavat Askeleet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRODUCT_REQUIREMENTS_DOCUMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Product Requirements Document: LLM-Powered Content Scoring and Summarization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VIDEO_STORY_OUTLINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    InsightHub-videon käsikirjoitus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_13_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_13_6" id="__nav_1_13_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_13_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_13_6">
+            <span class="md-nav__icon md-icon"></span>
+            Ideas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/Learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from InsightHub Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/MINDMAP_IDEAS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mind Map Application Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideas/RAG_WORKFLOW_COPILOT_BRAINSTORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Brainstorm: Building an n8n Workflow Copilot with a RAG System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_14" id="__nav_1_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reports
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/ARCHITECTURE_STRATEGY_SYNC_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raportti: Arkkitehtuurin ja Strategian Synkronointi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-080423/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 080423
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-144157/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 144157
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-144250/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 144250
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/CODE_QUALITY_AUDIT_REPORT_20250703-152236/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CODE QUALITY AUDIT REPORT 20250703 152236
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PERFORMANCE_AUDIT_REPORT_20250703-080706/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE AUDIT REPORT 20250703 080706
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PERFORMANCE_AUDIT_REPORT_20250703-152410/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PERFORMANCE AUDIT REPORT 20250703 152410
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/SECURITY_AUDIT_REPORT_20250703-152345/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SECURITY AUDIT REPORT 20250703 152345
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/TASK_46_PROGRESS_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtävä #46: End-to-End Datamallien Yhtenäistäminen - Edistymisraportti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_15" id="__nav_1_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/AI_TESTING_DOCUMENTATION_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🤖 AI Testing Documentation Index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright Testing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/PLAYWRIGHT_MCP_INTEGRATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Playwright MCP Integration with Vision Capabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/TESTING_STRATEGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_16" id="__nav_1_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_16">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/AIDER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIDER GUIDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keskitetty dokumentaatio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Keskitetty dokumentaatio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/KUVAUS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projektin kuvaus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../keskitetty_dokumentaatio/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mitä opin projektin aikana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Panualaluusua.github.io
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Panualaluusua.github.io
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/TODO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tehtävälista Portfolion Viimeistelyyn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ideas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/learnings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from Building My Portfolio Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../panualaluusua.github.io/project-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Overview: panualaluusua.github.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pyorailytapahtumat
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Pyorailytapahtumat
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pyorailytapahtumat/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: Pyöräilytapahtumat Suomessa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Streamlit e sm
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Streamlit e sm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/LEARNINGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learnings from the E-pyöräilyn SM-kisat Results Service Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../streamlit_e-sm/PROJECT_DESCRIPTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Description: E-pyöräilyn SM-kisojen Tulospalvelu Frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#yhteenveto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Yhteenveto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-nykytila-ja-haasteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Nykytila ja Haasteet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Nykytila ja Haasteet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-semanttisen-haun-rajoitteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Semanttisen Haun Rajoitteet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lineaarisen-pisteytyksen-haasteet" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Lineaarisen Pisteytyksen Haasteet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-arkkitehtoninen-suositus-insighthubille" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Arkkitehtoninen Suositus InsightHubille
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ehdotettu-arkkitehtuuri-monivaiheinen-pisteytys" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Ehdotettu Arkkitehtuuri: Monivaiheinen Pisteytys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ehdotettu Arkkitehtuuri: Monivaiheinen Pisteytys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-signaali-1-tuoreuspisteet-s_freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Signaali 1: Tuoreuspisteet ($S_{freshness}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Signaali 1: Tuoreuspisteet ($S_{freshness}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esimerkki-python-toteutuksesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esimerkki Python-toteutuksesta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-signaali-2-laatupisteet-s_quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Signaali 2: Laatupisteet ($S_{quality}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Signaali 2: Laatupisteet ($S_{quality}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tietomalli-articlequality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tietomalli: ArticleQuality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laatupisteiden-laskenta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laatupisteiden laskenta
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-signaali-3-kayttajavuorovaikutus-s_interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Signaali 3: Käyttäjävuorovaikutus ($S_{interaction}$)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Signaali 3: Käyttäjävuorovaikutus ($S_{interaction}$)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tietomalli-interactionsignal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tietomalli: InteractionSignal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-relevanssipisteiden-yhdistaminen-s_relevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Relevanssipisteiden Yhdistäminen ($S_{relevance}$)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-integraatio-jarjestelmaan-ja-toteutus" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Integraatio Järjestelmään ja Toteutus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Integraatio Järjestelmään ja Toteutus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sijoittuminen-arkkitehtuuriin-contentscorer-solmu" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Sijoittuminen Arkkitehtuuriin: ContentScorer-solmu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-konfiguraation-keskittaminen-best-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Konfiguraation Keskittäminen (Best Practice)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-tietomallien-valinen-suhde-articlequality-vs-contentrelevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Tietomallien välinen suhde: ArticleQuality vs. ContentRelevance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tietokantafunktion-esimerkki" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Tietokantafunktion Esimerkki
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seuraavat-askeleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Seuraavat Askeleet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="insighthub-monisignaalisen-sisaltorankkauksen-arkkitehtoninen-suunnitelma">InsightHub: Monisignaalisen Sisältörankkauksen Arkkitehtoninen Suunnitelma</h1>
+<h2 id="yhteenveto">Yhteenveto</h2>
+<p>Tämä asiakirja esittää InsightHub-projektin monisignaalisen sisältörankkausjärjestelmän ydinarkkitehtuurin. Tavoitteena on ylittää perinteisen semanttisen haun rajoitteet luomalla hienostunut relevanssipisteytys, joka palvelee vaativaa "Super-Alex"-kohdeyleisöä. Tämä yleisö arvostaa analyyttistä syvyyttä, laadukasta sisältöä ja tuoretta tietoa.</p>
+<h2 id="1-nykytila-ja-haasteet">1. Nykytila ja Haasteet</h2>
+<h3 id="11-semanttisen-haun-rajoitteet">1.1. Semanttisen Haun Rajoitteet</h3>
+<p>Perinteinen semanttinen haku (<code>pgvector</code>:in kosinisamanlaisuus) on tehokas ensimmäisen tason suodatin, mutta se ei yksin riitä "Super-Alex"-käyttäjän tarpeisiin. Se ei ota huomioon:
+-   <strong>Sisällön tuoreutta:</strong> Uusi ja ajankohtainen sisältö on usein arvokkaampaa.
+-   <strong>Käyttäjän aiempaa toimintaa:</strong> Aiemmat tykkäykset, tallennukset ja ohitukset ovat vahvoja signaaleja.
+-   <strong>Sisällön todellista laatua:</strong> Lyhyt, mutta syvällinen artikkeli voi olla arvokkaampi kuin pitkä ja pinnallinen.</p>
+<h3 id="12-lineaarisen-pisteytyksen-haasteet">1.2. Lineaarisen Pisteytyksen Haasteet</h3>
+<p>Yksinkertainen lineaarinen malli, jossa lasketaan yhteen eri signaalit, on altis epätasapainolle. Esimerkiksi erittäin tuore, mutta heikkolaatuinen artikkeli voisi saada korkeammat pisteet kuin vanhempi, mutta laadukas ja syvällinen analyysi.</p>
+<h3 id="13-arkkitehtoninen-suositus-insighthubille">1.3. Arkkitehtoninen Suositus InsightHubille</h3>
+<p>Projektille suositellaan virallisesti <strong>epälineaarista, monivaiheista rankkausmallia</strong>. Tämä malli yhdistää useita signaaleja ja varmistaa, että korkealaatuinen ja käyttäjälle relevantti sisältö nousee johdonmukaisesti esiin.</p>
+<h2 id="2-ehdotettu-arkkitehtuuri-monivaiheinen-pisteytys">2. Ehdotettu Arkkitehtuuri: Monivaiheinen Pisteytys</h2>
+<p>Arkkitehtuuri perustuu kolmeen pääsignaaliin: Tuoreus ($S_{freshness}$), Laatu ($S_{quality}$) ja Käyttäjävuorovaikutus ($S_{interaction}$). Nämä yhdistetään lopulliseksi relevanssipisteeksi ($S_{relevance}$).</p>
+<h3 id="21-signaali-1-tuoreuspisteet-s_freshness">2.1. Signaali 1: Tuoreuspisteet ($S_{freshness}$)</h3>
+<p>Tuoreus mallinnetaan eksponentiaalisella hajoamisfunktiolla.</p>
+<ul>
+<li><strong>Puoliintumisaika (<code>half_life_hours</code>):</strong> Aika tunneissa, jossa sisällön tuoreuspisteet puolittuvat.</li>
+<li><strong>Kaava:</strong>
+    [ S_{freshness} = \exp\left(- \frac{\ln(2) \cdot \text{age_in_hours}}{\text{half_life_hours}}\right) ]</li>
+</ul>
+<h4 id="esimerkki-python-toteutuksesta">Esimerkki Python-toteutuksesta</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_freshness_score</span><span class="p">(</span><span class="n">published_at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">half_life_hours</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">24</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the freshness score of a content item based on its age.</span>
+<span class="sd">    The score decays exponentially, halving every `half_life_hours`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">published_at</span>
+    <span class="n">age_in_hours</span> <span class="o">=</span> <span class="n">age</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3600</span>
+
+    <span class="k">if</span> <span class="n">age_in_hours</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span>  <span class="c1"># Content from the future is considered maximally fresh</span>
+
+    <span class="n">decay_rate</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">half_life_hours</span>
+    <span class="n">freshness_score</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">decay_rate</span> <span class="o">*</span> <span class="n">age_in_hours</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">freshness_score</span>
+</code></pre></div>
+<h3 id="22-signaali-2-laatupisteet-s_quality">2.2. Signaali 2: Laatupisteet ($S_{quality}$)</h3>
+<p>Laatupisteet ovat keskeinen erottava tekijä. Ne tuotetaan LLM-pohjaisella analyysillä, joka arvioi sisältöä useiden kriteerien perusteella.</p>
+<h4 id="tietomalli-articlequality">Tietomalli: <code>ArticleQuality</code></h4>
+<p>Tämä Pydantic-malli määrittelee laadun rakenteen.
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ArticleQuality</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the assessed quality of an article or content piece.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">clarity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Clarity and ease of understanding (1-10).&quot;</span><span class="p">)</span>
+    <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Depth and thoroughness of analysis (1-10).&quot;</span><span class="p">)</span>
+    <span class="n">novelty</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Originality of ideas and novelty of insights (1-10).&quot;</span><span class="p">)</span>
+    <span class="n">actionability</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Provides practical, actionable advice (1-10).&quot;</span><span class="p">)</span>
+    <span class="n">overall_quality_score</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Weighted average quality score (0-1).&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<h4 id="laatupisteiden-laskenta">Laatupisteiden laskenta</h4>
+<p>Pisteet lasketaan painotettuna keskiarvona:
+[ S_{quality} = \frac{(W_{clarity} \cdot C) + (W_{depth} \cdot D) + (W_{novelty} \cdot N) + (W_{actionability} \cdot A)}{10 \cdot (W_{clarity} + W_{depth} + W_{novelty} + W_{actionability})} ]
+<em>Missä C, D, N, A ovat LLM:n antamat pisteet (1-10).</em></p>
+<h3 id="23-signaali-3-kayttajavuorovaikutus-s_interaction">2.3. Signaali 3: Käyttäjävuorovaikutus ($S_{interaction}$)</h3>
+<p>Tämä signaali perustuu käyttäjän aiempaan toimintaan.</p>
+<ul>
+<li><strong>Positiiviset signaalit:</strong> <code>like</code>, <code>save</code></li>
+<li><strong>Negatiiviset signaalit:</strong> <code>hide</code></li>
+</ul>
+<h4 id="tietomalli-interactionsignal">Tietomalli: <code>InteractionSignal</code></h4>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InteractionSignal</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the interaction signal for a user-content pair.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">has_positive_interaction</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">has_negative_interaction</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+Pisteet lasketaan vuorovaikutuksen perusteella:
+-   <code>1.0</code>: Jos on positiivinen vuorovaikutus.
+-   <code>-1.0</code>: Jos on negatiivinen vuorovaikutus.
+-   <code>0.0</code>: Ei vuorovaikutusta.</p>
+<h2 id="3-relevanssipisteiden-yhdistaminen-s_relevance">3. Relevanssipisteiden Yhdistäminen ($S_{relevance}$)</h2>
+<p>Relevanssi ei ole pelkkä summa, vaan dynaaminen, epälineaarinen yhdistelmä.</p>
+<p>[ S_{relevance} = (S_{semantic} \cdot W_{semantic}) \cdot (1 + S_{freshness} \cdot W_{freshness}) \cdot (1 + S_{quality} \cdot W_{quality}) + (S_{interaction} \cdot W_{interaction}) ]</p>
+<ul>
+<li><strong>$S_{semantic}$:</strong> <code>pgvector</code>:in kosinisamanlaisuus (0-1).</li>
+<li><strong>Painokertoimet (W):</strong> Määrittävät kunkin signaalin tärkeyden. Esim. <code>W_quality</code> voi olla korkea, jotta laatu korostuu.</li>
+</ul>
+<p>Tämä malli varmistaa, että:
+-   Heikkolaatuinen sisältö ($S_{quality} \approx 0$) saa matalat pisteet, vaikka se olisi tuoretta.
+-   Käyttäjän negatiivinen vuorovaikutus ($S_{interaction} = -1.0$) laskee pisteitä merkittävästi.
+-   Korkea laatu ja tuoreus vahvistavat toisiaan.</p>
+<h2 id="4-integraatio-jarjestelmaan-ja-toteutus">4. Integraatio Järjestelmään ja Toteutus</h2>
+<h3 id="41-sijoittuminen-arkkitehtuuriin-contentscorer-solmu">4.1. Sijoittuminen Arkkitehtuuriin: <code>ContentScorer</code>-solmu</h3>
+<p>Tässä dokumentissa kuvattu rankkauslogiikka toteutetaan osana <code>ContentScorer</code>-solmua, joka on määritelty <code>ARCHITECTURE.md</code>- ja <code>backend/AI_PIPELINE.md</code>-dokumenteissa. Tämä solmu on osa laajempaa <code>LangGraph</code>-pohjaista orkestrointia.</p>
+<ul>
+<li><strong>Syöte:</strong> <code>ContentScorer</code> vastaanottaa <code>ContentState</code>-objektin, joka sisältää raakasisällön ja aiemmin lasketut embeddingit.</li>
+<li><strong>Toiminta:</strong> Solmu suorittaa tämän dokumentin mukaisen monivaiheisen pisteytyksen.</li>
+<li><strong>Tuotos:</strong> Solmu päivittää <code>ContentState</code>-objektin <code>relevance_score</code>-kentän.</li>
+</ul>
+<h3 id="42-konfiguraation-keskittaminen-best-practice">4.2. Konfiguraation Keskittäminen (Best Practice)</h3>
+<p>Jotta rankkausalgoritmia voidaan helposti virittää ja A/B-testata ilman jatkuvia tietokantamuutoksia, on suositeltavaa, että kaikki painokertoimet ja maagiset luvut hallitaan keskitetysti Python-koodissa.</p>
+<p><strong>Ehdotus:</strong> Luodaan <code>RankingSettings</code>-dataclass <code>src/config.py</code>-tiedostoon:
+<div class="highlight"><pre><span></span><code><span class="c1"># src/config.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RankingSettings</span><span class="p">:</span>
+    <span class="n">W_SEMANTIC</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">W_FRESHNESS</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">W_QUALITY</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># Korostetaan laatua</span>
+    <span class="n">W_INTERACTION</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="c1"># Vahva vaikutus vuorovaikutukselle</span>
+    <span class="n">HALF_LIFE_HOURS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span>
+</code></pre></div>
+Tietokantafunktio <code>get_ranked_content_for_user</code> tulisi muokata hyväksymään nämä arvot parametreina.</p>
+<h3 id="43-tietomallien-valinen-suhde-articlequality-vs-contentrelevance">4.3. Tietomallien välinen suhde: <code>ArticleQuality</code> vs. <code>ContentRelevance</code></h3>
+<p>Olemassa oleva <code>ContentRelevance</code>-malli (<code>src/models/content_relevance.py</code>) on yksinkertaisempi malli yleisen relevanssin arviointiin. Tässä dokumentissa ehdotettu <code>ArticleQuality</code>-malli on sen <strong>edistyneempi ja yksityiskohtaisempi erikoistapaus</strong>.</p>
+<p><strong>Selvennys:</strong>
+- <code>ContentRelevance</code>: Voidaan käyttää nopeaan, ensimmäisen tason suodatukseen.
+- <code>ArticleQuality</code>: Käytetään syvällisempään laadun arviointiin ja se on keskeinen osa lopullista <code>S_quality</code>-pisteytystä. Jatkokehityksessä nämä kaksi voidaan yhdistää tai <code>ArticleQuality</code> voi periä <code>ContentRelevance</code>-mallin.</p>
+<h3 id="44-tietokantafunktion-esimerkki">4.4. Tietokantafunktion Esimerkki</h3>
+<p>Tässä on esimerkki PostgreSQL-funktiosta, joka toteuttaa rankkauslogiikan.</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">get_ranked_content_for_user</span><span class="p">(</span>
+<span class="w">    </span><span class="n">p_user_id</span><span class="w"> </span><span class="n">UUID</span><span class="p">,</span>
+<span class="w">    </span><span class="n">p_user_interest_vector</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="mi">1536</span><span class="p">),</span>
+<span class="w">    </span><span class="n">p_match_threshold</span><span class="w"> </span><span class="nb">FLOAT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">p_match_count</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">)</span>
+<span class="k">RETURNS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="p">,</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">published_at</span><span class="w"> </span><span class="n">TIMESTAMPTZ</span><span class="p">,</span>
+<span class="w">    </span><span class="n">content_type</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">relevance_score</span><span class="w"> </span><span class="nb">FLOAT</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">DECLARE</span>
+<span class="w">    </span><span class="c1">-- Painokertoimet (W) ja muut parametrit</span>
+<span class="w">    </span><span class="c1">-- HUOM: Nämä tulisi siirtää Python-konfiguraatioon ja antaa parametreina</span>
+<span class="w">    </span><span class="n">W_SEMANTIC</span><span class="w"> </span><span class="nb">FLOAT</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">W_FRESHNESS</span><span class="w"> </span><span class="nb">FLOAT</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">W_QUALITY</span><span class="w"> </span><span class="nb">FLOAT</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">W_INTERACTION</span><span class="w"> </span><span class="nb">FLOAT</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">HALF_LIFE_HOURS</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">48</span><span class="p">;</span>
+<span class="k">BEGIN</span>
+<span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">QUERY</span>
+<span class="w">    </span><span class="k">WITH</span><span class="w"> </span><span class="n">semantic_scores</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">-- Vaihe 1: Semanttinen haku</span>
+<span class="w">        </span><span class="k">SELECT</span>
+<span class="w">            </span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">            </span><span class="k">c</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">            </span><span class="k">c</span><span class="p">.</span><span class="n">url</span><span class="p">,</span>
+<span class="w">            </span><span class="k">c</span><span class="p">.</span><span class="n">published_at</span><span class="p">,</span>
+<span class="w">            </span><span class="k">c</span><span class="p">.</span><span class="n">content_type</span><span class="p">,</span>
+<span class="w">            </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">embedding</span><span class="w"> </span><span class="o">&lt;=&gt;</span><span class="w"> </span><span class="n">p_user_interest_vector</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">semantic_score</span>
+<span class="w">        </span><span class="k">FROM</span>
+<span class="w">            </span><span class="n">content</span><span class="w"> </span><span class="k">c</span>
+<span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">embedding</span><span class="w"> </span><span class="o">&lt;=&gt;</span><span class="w"> </span><span class="n">p_user_interest_vector</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p_match_threshold</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="n">interaction_scores</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">-- Vaihe 2: Käyttäjävuorovaikutus</span>
+<span class="w">        </span><span class="k">SELECT</span>
+<span class="w">            </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">            </span><span class="k">COALESCE</span><span class="p">(</span>
+<span class="w">                </span><span class="k">MAX</span><span class="p">(</span><span class="k">CASE</span>
+<span class="w">                    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">interaction_type</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;like&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;save&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="w">                    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">interaction_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hide&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="w">                    </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="w">                </span><span class="k">END</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="w">            </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">interaction_score</span>
+<span class="w">        </span><span class="k">FROM</span>
+<span class="w">            </span><span class="n">semantic_scores</span><span class="w"> </span><span class="n">ss</span>
+<span class="w">        </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span>
+<span class="w">            </span><span class="n">interactions</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">content_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_user_id</span>
+<span class="w">        </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">            </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- Yhdistetään kaikki pisteet ja lasketaan lopullinen relevanssi</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ss</span><span class="p">.</span><span class="n">title</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ss</span><span class="p">.</span><span class="n">url</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ss</span><span class="p">.</span><span class="n">published_at</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ss</span><span class="p">.</span><span class="n">content_type</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">-- Lopullinen relevanssipisteiden laskenta</span>
+<span class="w">        </span><span class="p">(</span><span class="n">ss</span><span class="p">.</span><span class="n">semantic_score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">W_SEMANTIC</span><span class="p">)</span><span class="w"> </span><span class="o">*</span>
+<span class="w">        </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">ln</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">EPOCH</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">published_at</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3600</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">HALF_LIFE_HOURS</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">W_FRESHNESS</span><span class="p">)</span><span class="w"> </span><span class="o">*</span>
+<span class="w">        </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">cq</span><span class="p">.</span><span class="n">overall_quality_score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">W_QUALITY</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="p">(</span><span class="n">inter</span><span class="p">.</span><span class="n">interaction_score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">W_INTERACTION</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">final_relevance_score</span>
+<span class="w">    </span><span class="k">FROM</span>
+<span class="w">        </span><span class="n">semantic_scores</span><span class="w"> </span><span class="n">ss</span>
+<span class="w">    </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">content_quality</span><span class="w"> </span><span class="n">cq</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cq</span><span class="p">.</span><span class="n">content_id</span>
+<span class="w">    </span><span class="k">JOIN</span>
+<span class="w">        </span><span class="n">interaction_scores</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inter</span><span class="p">.</span><span class="n">id</span>
+<span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">        </span><span class="n">final_relevance_score</span><span class="w"> </span><span class="k">DESC</span>
+<span class="w">    </span><span class="k">LIMIT</span><span class="w"> </span><span class="n">p_match_count</span><span class="p">;</span>
+<span class="k">END</span><span class="p">;</span>
+<span class="err">$$</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpgsql</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="5-seuraavat-askeleet">5. Seuraavat Askeleet</h2>
+<ol>
+<li><strong>Toteutus:</strong> Toteutetaan yllä kuvattu logiikka <code>ContentScorer</code>-solmussa ja tietokantafunktiossa.</li>
+<li><strong>Testaus:</strong> Testataan rankkausmallia laajasti erilaisilla sisällöillä ja käyttäjäprofiileilla.</li>
+<li><strong>Iterointi:</strong> Kerätään dataa ja käyttäjäpalautetta mallin jatkuvaa virittämistä varten. LangSmith-integraatio on tässä avainasemassa.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
